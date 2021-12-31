@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:healthify/constants.dart';
-import 'package:healthify/widgets/my_password_field.dart';
-import 'package:healthify/widgets/my_text_button.dart';
-import 'package:healthify/widgets/my_text_field.dart';
+import '../widgets/widget.dart';
+import '../constants.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool isPasswordVisible = true;
- 
+class _RegisterPageState extends State<RegisterPage> {
+  bool passwordVisibility = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,49 +29,48 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: SafeArea(
-        //to make page scrollable
         child: CustomScrollView(
-          reverse: true,
           slivers: [
             SliverFillRemaining(
               hasScrollBody: false,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Flexible(
-                      fit: FlexFit.loose,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Welcome back.",
+                            "Register",
                             style: kHeadline,
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
                           Text(
-                            "You've been missed!",
+                            "Create new account to get started.",
                             style: kBodyText2,
                           ),
                           SizedBox(
-                            height: 60,
+                            height: 50,
+                          ),
+                          MyTextField(
+                            hintText: 'Name',
+                            inputType: TextInputType.name,
                           ),
                           MyTextField(
                             hintText: 'Email',
-                            inputType: TextInputType.text,
-
+                            inputType: TextInputType.emailAddress,
                           ),
+                          
                           MyPasswordField(
-                            isPasswordVisible: isPasswordVisible,
+                            isPasswordVisible: passwordVisibility,
                             onTap: () {
                               setState(() {
-                                isPasswordVisible = !isPasswordVisible;
+                                passwordVisibility = !passwordVisibility;
                               });
                             },
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -82,16 +78,16 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account? ",
+                          "Already have an account? ",
                           style: kBodyText,
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(
-                              context,'/register');
+                              context,'/login');
                           },
                           child: Text(
-                            'Register',
+                            'Sign In',
                             style: kBodyText.copyWith(
                               color: Colors.white,
                             ),
@@ -103,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     MyTextButton(
-                      buttonName: 'Sign In',
+                      buttonName: 'Register',
                       onTap: () {
                             Navigator.pushReplacementNamed(
                               context,'/home');
@@ -116,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: kBodyText,
                         ),
                     MyTextButton(
-                      buttonName: 'Sign In With Google',
+                      buttonName: 'Register With Google',
                       onTap: () {
                          GoogleSignIn().signIn();
                       },

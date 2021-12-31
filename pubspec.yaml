@@ -25,7 +25,9 @@ dependencies:
     sdk: flutter
   font_awesome_flutter:
   google_sign_in:
-
+  animated_splash_screen:
+  provider:
+  google_fonts:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
