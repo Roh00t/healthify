@@ -4,18 +4,21 @@ import '../constants.dart';
 class MyPasswordField extends StatelessWidget {
   const MyPasswordField({
     Key key,
+    @required this.controllerInput,
     @required this.isPasswordVisible,
     @required this.onTap,
   }) : super(key: key);
 
   final bool isPasswordVisible;
   final Function onTap;
+  final TextEditingController controllerInput;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
+        controller: controllerInput,
         style: kBodyText.copyWith(
           color: Colors.white,
         ),

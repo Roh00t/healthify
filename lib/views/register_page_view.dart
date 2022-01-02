@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:healthify/services/auth_service.dart';
+import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
 
@@ -13,6 +15,11 @@ class _RegisterPageState extends State<RegisterPage> {
   bool passwordVisibility = true;
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -55,15 +62,18 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 50,
                           ),
                           MyTextField(
+                            controllerType: nameController,
                             hintText: 'Name',
                             inputType: TextInputType.name,
                           ),
                           MyTextField(
+                            controllerType: emailController,
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
                           ),
                           
                           MyPasswordField(
+                            controllerInput: passwordController,
                             isPasswordVisible: passwordVisibility,
                             onTap: () {
                               setState(() {
@@ -82,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           style: kBodyText,
                         ),
                         GestureDetector(
-                          onTap: () {
+                          onTap: (){
                             Navigator.pushNamed(
                               context,'/login');
                           },
@@ -100,7 +110,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     MyTextButton(
                       buttonName: 'Register',
-                      onTap: () {
+                      onTap: () async{
+                        await authService.createUserWithEmailAndPassword(
+                          nameController.text, 
+                          emailController.text, 
+                          passwordController.text
+                          );
                             Navigator.pushReplacementNamed(
                               context,'/home');
                           },
