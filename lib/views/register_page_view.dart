@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
@@ -20,6 +20,8 @@ class _RegisterPageState extends State<RegisterPage> {
     final TextEditingController passwordController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
+    // final googleService = Provider.of<GoogleSignInProvider>(context);
+   
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -110,12 +112,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     MyTextButton(
                       buttonName: 'Register',
-                      onTap: () async{
-                        await authService.createUserWithEmailAndPassword(
+                      onTap: (){
+                         authService.createUserWithEmailAndPassword(
                           nameController.text, 
                           emailController.text, 
                           passwordController.text
-                          );
+                          ).then((value){
+                            FirebaseFirestore.instance.collection('users').doc(value.uid).set({"name":nameController.text,"email": value.email, "password":passwordController.text});
+                          });
                             Navigator.pushReplacementNamed(
                               context,'/home');
                           },
@@ -129,7 +133,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     MyTextButton(
                       buttonName: 'Register With Google',
                       onTap: () {
-                         GoogleSignIn().signIn();
+                       
+                        //   googleService.googleLogin();
+                         
                       },
                       bgColor: Colors.white,
                       textColor: Colors.black87,

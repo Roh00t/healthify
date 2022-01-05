@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:healthify/models/user_model.dart';
 
@@ -7,7 +8,7 @@ class AuthService{
     if(user == null){
       return null;
     }else{
-      return User(user.uid,user.displayName,user.email);
+      return User(user.uid, user.displayName, user.email);
     }
   }
   Stream<User> get user{

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/widgets/my_password_field.dart';
@@ -22,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     final TextEditingController passwordController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
+    // final googleService = Provider.of<GoogleSignInProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -127,7 +127,8 @@ class _LoginPageState extends State<LoginPage> {
                     MyTextButton(
                       buttonName: 'Sign In With Google',
                       onTap: () {
-                         GoogleSignIn().signIn();
+                        
+                        //  googleService.googleLogin();
                       },
                       bgColor: Colors.white,
                       textColor: Colors.black87,
