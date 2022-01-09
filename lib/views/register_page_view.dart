@@ -18,10 +18,8 @@ class _RegisterPageState extends State<RegisterPage> {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-
     final authService = Provider.of<AuthService>(context);
     // final googleService = Provider.of<GoogleSignInProvider>(context);
-   
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,

@@ -1,9 +1,21 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
+import 'package:healthify/views/welcome_page_view.dart';
+const bool kReleaseMode = bool.fromEnvironment('dart.vm.product');
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    if (kReleaseMode) {
+      return WelcomePage();
+    } else{
+      return MaterialApp();
+    }
+  };
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
