@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/views/home_page_view.dart';
+
+import 'package:healthify/views/main_page.dart';
 import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
@@ -118,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (reguser != null) {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => MainPage()));
                         }
                       },
                       bgColor: Colors.white,

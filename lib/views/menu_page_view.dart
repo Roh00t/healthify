@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthify/constants.dart';
 
 class MenuPage extends StatefulWidget {
   @override
@@ -8,6 +9,18 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: homeBackgroundColor,
+          title: Text('Menu Page'),
+        ),
+        body: Center(
+          
+        ),
+        
+      ),
+    );
   }
-}
+  }

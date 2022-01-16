@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthify/constants.dart';
 
 class FitnessPage extends StatefulWidget {
   @override
@@ -8,6 +9,17 @@ class FitnessPage extends StatefulWidget {
 class _FitnessPageState extends State<FitnessPage> {
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: homeBackgroundColor,
+          title: Text('Fitness'),
+        ),
+        body: Center(
+          
+        ),
+      ),
+    );
   }
 }

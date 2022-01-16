@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/firestore_service.dart';
-import 'package:healthify/views/home_page_view.dart';
+
+import 'package:healthify/views/main_page.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
@@ -118,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         if (newuser != null) {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => MainPage()));
                         } else {
                           Navigator.pushReplacementNamed(context, '/login');
                         }

@@ -8,8 +8,8 @@ import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/views/about_page_view.dart';
 import 'package:healthify/views/editProfile_page_view.dart';
 import 'package:healthify/views/fitness_page_view.dart';
-import 'package:healthify/views/home_page_view.dart';
 import 'package:healthify/views/login_page_view.dart';
+import 'package:healthify/views/main_page.dart';
 import 'package:healthify/views/menu_page_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/views/register_page_view.dart';
@@ -58,9 +58,9 @@ class MyApp extends StatelessWidget {
           '/about':(context)=>AboutPage(),
           '/fitness':(context)=>FitnessPage(),
           '/foodMenu':(context)=>MenuPage(),
-          'profile':(context)=> ProfilePage(),
-          'editProfile':(context)=>EditProfilePage(),
-          '/home':(context)=> HomePage(),
+          '/profile':(context)=> ProfilePage(),
+          '/editProfile':(context)=>EditProfilePage(),
+          '/home':(context)=> MainPage(),
         },
       ),
     );

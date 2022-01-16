@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 // Colors
 const kBackgroundColor = Color(0xff191720);
-const homeBackgroundColor = Colors.white60;
+const NavBackgroundColor = Colors.blue;
+const homeBackgroundColor = Colors.blue;
 const kTextFieldFill = Color(0xff1E1C24);
 // TextStyles
 const kHeadline = TextStyle(
