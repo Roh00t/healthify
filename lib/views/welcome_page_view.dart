@@ -18,10 +18,6 @@ class WelcomePage extends StatelessWidget {
                     Center(
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
-                        child: Image(
-                          image:
-                              AssetImage('assets/images/team_illustration.png'),
-                        ),
                       ),
                     ),
                     SizedBox(

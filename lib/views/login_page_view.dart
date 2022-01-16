@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
+import 'package:healthify/views/home_page_view.dart';
 import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
@@ -14,16 +15,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isPasswordVisible = true;
- 
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-
     final authService = Provider.of<AuthService>(context);
-    // final googleService = Provider.of<GoogleSignInProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: kBackgroundColor,
         elevation: 0,
         leading: IconButton(
@@ -72,7 +72,6 @@ class _LoginPageState extends State<LoginPage> {
                             controllerType: emailController,
                             hintText: 'Email',
                             inputType: TextInputType.text,
-
                           ),
                           MyPasswordField(
                             controllerInput: passwordController,
@@ -95,8 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
-                              context,'/register');
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: Text(
                             'Register',
@@ -112,23 +110,16 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     MyTextButton(
                       buttonName: 'Sign In',
-                      onTap: () {
-                        authService.signInWithEmailAndPassword(emailController.text, passwordController.text);
-                            Navigator.pushReplacementNamed(
-                              context,'/home');
-                          },
-                      bgColor: Colors.white,
-                      textColor: Colors.black87,
-                    ),
-                    Text(
-                          "Or",
-                          style: kBodyText,
-                        ),
-                    MyTextButton(
-                      buttonName: 'Sign In With Google',
-                      onTap: () {
-                        
-                        //  googleService.googleLogin();
+                      onTap: () async {
+                        var reguser = await authService.signIn(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        );
+                        if (reguser != null) {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        }
                       },
                       bgColor: Colors.white,
                       textColor: Colors.black87,

@@ -1,49 +1,41 @@
-
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:healthify/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class AuthService{
-  FlutterSecureStorage storage;
-  AuthService() {
-    storage = new FlutterSecureStorage(); // 1
-  }
+class AuthService {
   final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
-  //For Firebase Auth
-  User _userFromFirebase(auth.User user){
-    if(user == null){
-      return null;
-    }else{
-      return User(user.uid, user.displayName, user.email);
-    }
-  }
-  Stream<User> get user{
-    return _firebaseAuth.authStateChanges().map(_userFromFirebase);
-  }
-
-  //Auth Functions
-  Future<User> signInWithEmailAndPassword(
-    String email,
-    String password,
-  ) async{
-    final credential = await _firebaseAuth.signInWithEmailAndPassword(
-      email: email, 
-      password: password,
-      ); 
-      return _userFromFirebase(credential.user);
-  }
-    Future<User> createUserWithEmailAndPassword(
-    String displayName,
-    String email,
-    String password,
-  ) async{
-    final credential = await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email, 
-      password: password
-      );
-    return _userFromFirebase(credential.user);
-  }
-  Future<void> signOut() async{
-    return await _firebaseAuth.signOut();
-  }
+  //For Firebase Auth 
+  Future<User> signIn({String email, String password}) async {
+ try {
+ UserCredential ucred = await _firebaseAuth.signInWithEmailAndPassword(
+ email: email, password: password);
+ User user = ucred.user;
+ print("Signed In successful! userid: $ucred.user.uid, user: $user.");
+ return user;
+ } on auth.FirebaseAuthException catch (e) {
+ Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+ return null;
+ } catch (e) {
+ print(e.message);
+ return null;
+ }
+} //signIn
+ Future<User> signUp({String name,String email, String password}) async {
+ try {
+ UserCredential ucred = await _firebaseAuth.createUserWithEmailAndPassword(
+email: email, password: password);
+ User user = ucred.user;
+ print('Signed Up successful! user: $user');
+ return user;
+ } on FirebaseAuthException catch (e) {
+ Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+ return null;
+ } catch (e) {
+ print(e.message);
+ return null;
+ }
+ } //signUp
+ Future<void> signOut() async {
+ await _firebaseAuth.signOut();
+ } //sig
 }

@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/services/wrapper.dart';
 import 'package:healthify/views/about_page_view.dart';
 import 'package:healthify/views/editProfile_page_view.dart';
 import 'package:healthify/views/fitness_page_view.dart';
+import 'package:healthify/views/home_page_view.dart';
 import 'package:healthify/views/login_page_view.dart';
 import 'package:healthify/views/menu_page_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
           '/foodMenu':(context)=>MenuPage(),
           'profile':(context)=> ProfilePage(),
           'editProfile':(context)=>EditProfilePage(),
-          '/home':(context)=> Wrapper(),
+          '/home':(context)=> HomePage(),
         },
       ),
     );

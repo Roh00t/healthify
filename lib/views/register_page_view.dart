@@ -1,7 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/services/auth_service.dart';
+import 'package:healthify/services/firestore_service.dart';
+import 'package:healthify/views/home_page_view.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
@@ -19,7 +21,6 @@ class _RegisterPageState extends State<RegisterPage> {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final authService = Provider.of<AuthService>(context);
-    // final googleService = Provider.of<GoogleSignInProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -71,7 +72,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
                           ),
-                          
                           MyPasswordField(
                             controllerInput: passwordController,
                             isPasswordVisible: passwordVisibility,
@@ -92,9 +92,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           style: kBodyText,
                         ),
                         GestureDetector(
-                          onTap: (){
-                            Navigator.pushNamed(
-                              context,'/login');
+                          onTap: () {
+                            Navigator.pushNamed(context, '/login');
                           },
                           child: Text(
                             'Sign In',
@@ -110,30 +109,26 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     MyTextButton(
                       buttonName: 'Register',
-                      onTap: (){
-                         authService.createUserWithEmailAndPassword(
-                          nameController.text, 
-                          emailController.text, 
-                          passwordController.text
-                          ).then((value){
-                            FirebaseFirestore.instance.collection('users').doc(value.uid).set({"name":nameController.text,"email": value.email, "password":passwordController.text});
-                          });
-                            Navigator.pushReplacementNamed(
-                              context,'/home');
-                          },
-                      bgColor: Colors.white,
-                      textColor: Colors.black87,
-                    ),
-                    Text(
-                          "Or",
-                          style: kBodyText,
-                        ),
-                    MyTextButton(
-                      buttonName: 'Register With Google',
-                      onTap: () {
-                       
-                        //   googleService.googleLogin();
-                         
+                      onTap: () async {
+                        var newuser = await authService.signUp(
+                          name: nameController.text.trim(),
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        );
+                        if (newuser != null) {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        } else {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        }
+                        FirestoreService().addUserData(
+                            nameController.text.trim(),
+                            emailController.text.trim(),
+                            passwordController.text.trim());
+                        Fluttertoast.showToast(
+                            msg: "Data saved successfully",
+                            gravity: ToastGravity.TOP);
                       },
                       bgColor: Colors.white,
                       textColor: Colors.black87,
