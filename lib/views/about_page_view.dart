@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 
 class AboutPage extends StatefulWidget {
+  static const String id = "about_page";
   @override
   _AboutPageState createState() => _AboutPageState();
 }

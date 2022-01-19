@@ -2,14 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
-
 import 'package:healthify/views/main_page.dart';
+import 'package:healthify/views/register_page_view.dart';
+import 'package:healthify/views/welcome_page_view.dart';
 import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
+  static const String id = "login_page";
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -24,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: kBackgroundColor,
         elevation: 0,
         leading: IconButton(
@@ -95,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/register');
+                            Navigator.pushNamed(context, RegisterPage.id);
                           },
                           child: Text(
                             'Register',
@@ -112,16 +113,24 @@ class _LoginPageState extends State<LoginPage> {
                     MyTextButton(
                       buttonName: 'Sign In',
                       onTap: () async {
+                        try {
                         var reguser = await authService.signIn(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
                         if (reguser != null) {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage()));
+                          print("User signed in successfully");
+                          Navigator.of(context).pushNamed(MainPage.id);
+                              
+                        }else{
+                          print("User not found");
+                           Navigator.of(context).pushNamed(WelcomePage.id);
+                        }
+                        } catch (e) {
+                          print("This is an exception from Login Page at Login Btn "+e.message);
                         }
                       },
+                      
                       bgColor: Colors.white,
                       textColor: Colors.black87,
                     ),

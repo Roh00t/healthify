@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/firestore_service.dart';
+import 'package:healthify/views/login_page_view.dart';
 
 import 'package:healthify/views/main_page.dart';
+import 'package:healthify/views/welcome_page_view.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
 
 class RegisterPage extends StatefulWidget {
+    static const String id = "register_page";
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -94,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, LoginPage.id);
                           },
                           child: Text(
                             'Sign In',
@@ -111,25 +113,24 @@ class _RegisterPageState extends State<RegisterPage> {
                     MyTextButton(
                       buttonName: 'Register',
                       onTap: () async {
+                        try {
                         var newuser = await authService.signUp(
                           name: nameController.text.trim(),
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
                         if (newuser != null) {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage()));
-                        } else {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        }
-                        FirestoreService().addUserData(
+                          FirestoreService().addUserData(
                             nameController.text.trim(),
                             emailController.text.trim(),
                             passwordController.text.trim());
-                        Fluttertoast.showToast(
-                            msg: "Data saved successfully",
-                            gravity: ToastGravity.TOP);
+                          Navigator.pushNamed(context, MainPage.id);
+                        } else {
+                          Navigator.pushNamed(context, WelcomePage.id);
+                        }
+                        } catch (e) {
+                          print("This is an exception from Register Page at Register Btn "+e.message);
+                        }
                       },
                       bgColor: Colors.white,
                       textColor: Colors.black87,

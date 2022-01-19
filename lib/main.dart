@@ -52,16 +52,17 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.amber,
         ),
         routes: {
-          '/welcome':(context)=> WelcomePage(),
-          '/login':(context)=> LoginPage(),
-          '/register':(context)=> RegisterPage(),
-          '/about':(context)=>AboutPage(),
-          '/fitness':(context)=>FitnessPage(),
-          '/foodMenu':(context)=>MenuPage(),
-          '/profile':(context)=> ProfilePage(),
-          '/editProfile':(context)=>EditProfilePage(),
-          '/home':(context)=> MainPage(),
+          WelcomePage.id:(context)=> WelcomePage(),
+          LoginPage.id:(context)=> LoginPage(),
+          RegisterPage.id:(context)=> RegisterPage(),
+          AboutPage.id:(context)=>AboutPage(),
+          FitnessPage.id:(context)=>FitnessPage(),
+          MenuPage.id:(context)=>MenuPage(),
+          ProfilePage.id:(context)=> ProfilePage(),
+          EditProfilePage.id:(context)=>EditProfilePage(),
+          MainPage.id:(context)=> MainPage(),
         },
+        
       ),
     );
   }

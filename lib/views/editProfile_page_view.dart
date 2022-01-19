@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 class EditProfilePage extends StatefulWidget {
+  static const String id = "editProfile_page";
   @override
   _EditProfilePageState createState() => _EditProfilePageState();
 }
