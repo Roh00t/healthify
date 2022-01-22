@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/firestore_service.dart';
 import 'package:healthify/views/login_page_view.dart';
-
 import 'package:healthify/views/main_page.dart';
 import 'package:healthify/views/welcome_page_view.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
-
 class RegisterPage extends StatefulWidget {
     static const String id = "register_page";
   @override

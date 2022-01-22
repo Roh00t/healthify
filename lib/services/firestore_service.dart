@@ -11,7 +11,7 @@ class FirestoreService {
     String userName, String userEmail, String userPassword) async {
       try {
     var docRef = FirestoreService().userCollection.doc();
-    print('add docRef: ' + docRef.id);
+    print('added User: ' + docRef.id);
     await userCollection.doc(docRef.id).set({
       'uid': docRef.id,
       'name': userName,
