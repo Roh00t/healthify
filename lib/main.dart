@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           scaffoldBackgroundColor: kBackgroundColor,
           primarySwatch: Colors.blue,
+          
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: WelcomePage(),
