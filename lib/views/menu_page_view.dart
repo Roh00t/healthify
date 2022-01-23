@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
-
 class MenuPage extends StatefulWidget {
-    static const String id = "menu_page";
   @override
   _MenuPageState createState() => _MenuPageState();
 }
@@ -20,8 +18,9 @@ class _MenuPageState extends State<MenuPage> {
         body: Center(
           
         ),
-        
       ),
+      
+      
     );
   }
   }

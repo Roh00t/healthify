@@ -1,18 +1,17 @@
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/views/about_page_view.dart';
 import 'package:healthify/views/editProfile_page_view.dart';
 import 'package:healthify/views/fitness_page_view.dart';
+import 'package:healthify/views/home_page_view.dart';
 import 'package:healthify/views/login_page_view.dart';
-import 'package:healthify/views/main_page.dart';
 import 'package:healthify/views/menu_page_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/views/register_page_view.dart';
+import 'package:healthify/views/setting_page_view.dart';
 import 'package:healthify/views/welcome_page_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,23 +43,18 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: AnimatedSplashScreen(
-          duration: 1500,
-          splash: Image.asset('assets/images/splashScreen.png'),
-          nextScreen: WelcomePage(),
-          splashTransition: SplashTransition.slideTransition,
-          backgroundColor: Colors.amber,
-        ),
+        home: WelcomePage(),
         routes: {
-          WelcomePage.id:(context)=> WelcomePage(),
-          LoginPage.id:(context)=> LoginPage(),
-          RegisterPage.id:(context)=> RegisterPage(),
-          AboutPage.id:(context)=>AboutPage(),
-          FitnessPage.id:(context)=>FitnessPage(),
-          MenuPage.id:(context)=>MenuPage(),
-          ProfilePage.id:(context)=> ProfilePage(),
-          EditProfilePage.id:(context)=>EditProfilePage(),
-          MainPage.id:(context)=> MainPage(),
+          '/home':(context)=> HomePage(),
+          '/welcome':(context)=> WelcomePage(),
+          '/login':(context)=> LoginPage(),
+          '/register':(context)=> RegisterPage(),
+          '/about':(context)=>AboutPage(),
+          '/fitness':(context)=>FitnessPage(),
+          '/menu':(context)=>MenuPage(),
+          '/settings':(context)=>SettingsPage(),
+          '/profile':(context)=> ProfilePage(),
+          '/editProfile':(context)=>EditProfilePage(),
         },
         
       ),

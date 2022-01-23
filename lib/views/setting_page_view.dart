@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
-
-class AboutPage extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   @override
-  _AboutPageState createState() => _AboutPageState();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,10 +13,12 @@ class _AboutPageState extends State<AboutPage> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: homeBackgroundColor,
-          title: Text('About Page'),
+          title: Text('Settings Page'),
         ),
         body: Center(
+          
         ),
+        
       ),
     );
   }

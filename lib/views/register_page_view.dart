@@ -2,14 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/firestore_service.dart';
-import 'package:healthify/views/login_page_view.dart';
-import 'package:healthify/views/main_page.dart';
-import 'package:healthify/views/welcome_page_view.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
 class RegisterPage extends StatefulWidget {
-    static const String id = "register_page";
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -94,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, LoginPage.id);
+                            Navigator.of(context).pushNamed('/login');
                           },
                           child: Text(
                             'Sign In',
@@ -122,9 +118,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             nameController.text.trim(),
                             emailController.text.trim(),
                             passwordController.text.trim());
-                          Navigator.pushNamed(context, MainPage.id);
+                           Navigator.of(context).pushNamed('/home');
                         } else {
-                          Navigator.pushNamed(context, WelcomePage.id);
+                           Navigator.of(context).pushNamed('/welcome');
                         }
                         } catch (e) {
                           print("This is an exception from Register Page at Register Btn "+e.message);

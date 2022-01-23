@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthify/views/login_page_view.dart';
-import 'package:healthify/views/register_page_view.dart';
 import '../constants.dart';
 import '../widgets/widget.dart';
 
 class WelcomePage extends StatelessWidget {
-    static const String id = "welcome_page";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +55,7 @@ class WelcomePage extends StatelessWidget {
                         bgColor: Colors.white,
                         buttonName: 'Register',
                         onTap: () {
-                            Navigator.pushNamed(
-                              context,RegisterPage.id);
+                            Navigator.of(context).pushNamed('/register');
                           },
                         textColor: Colors.black87,
                       ),
@@ -69,8 +65,7 @@ class WelcomePage extends StatelessWidget {
                         bgColor: Colors.transparent,
                         buttonName: 'Sign In',
                         onTap: () {
-                            Navigator.pushNamed(
-                              context,LoginPage.id);
+                             Navigator.of(context).pushNamed('/login');
                           },
                         textColor: Colors.white,
                       ),

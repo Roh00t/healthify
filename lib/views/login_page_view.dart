@@ -2,16 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/views/main_page.dart';
-import 'package:healthify/views/register_page_view.dart';
-import 'package:healthify/views/welcome_page_view.dart';
+
 import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
-  static const String id = "login_page";
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -96,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RegisterPage.id);
+                             Navigator.of(context).pushNamed('/register');
                           },
                           child: Text(
                             'Register',
@@ -120,11 +117,11 @@ class _LoginPageState extends State<LoginPage> {
                         );
                         if (reguser != null) {
                           print("User signed in successfully");
-                          Navigator.of(context).pushNamed(MainPage.id);
+                          Navigator.of(context).pushNamed('/home');
                               
                         }else{
                           print("User not found");
-                           Navigator.of(context).pushNamed(WelcomePage.id);
+                           Navigator.of(context).pushNamed('/welcome');
                         }
                         } catch (e) {
                           print("This is an exception from Login Page at Login Btn "+e.message);
