@@ -14,9 +14,9 @@ class _RegisterPageState extends State<RegisterPage> {
   bool passwordVisibility = true;
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final nameController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
