@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     AuthService().getCurrentUser();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      
       home: Scaffold(
         body: SafeArea(
           child: _listPages[_currentIndex],
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                 icon: Icon(Icons.menu_book_outlined),
                 color: Colors.white,
+                
                 onPressed: () {
                   setState(() {
                     _currentIndex = 1;
