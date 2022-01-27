@@ -16,7 +16,7 @@ class FirestoreService {
       'uid': docRef.id,
       'name': userName,
       'email': userEmail,
-      'password': userPassword
+      'password': userPassword,
     });
       } catch(e){
         print(e.message);
@@ -33,4 +33,5 @@ class FirestoreService {
     print('Userlist: $userList');
     return userList;
   }
+
 }

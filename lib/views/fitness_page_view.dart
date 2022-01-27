@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/widgets/exercises_widget.dart';
 import 'package:healthify/widgets/line_chart_widget.dart';
-
 
 class FitnessPage extends StatefulWidget {
   @override
@@ -20,16 +19,22 @@ class _FitnessPageState extends State<FitnessPage> {
           ],
         ),
       );
-      SliverAppBar buildAppBar(BuildContext context) => SliverAppBar(
+  SliverAppBar buildAppBar(BuildContext context) => SliverAppBar(
         flexibleSpace: FlexibleSpaceBar(background: LineChartWidget()),
         expandedHeight: MediaQuery.of(context).size.height * 0.5,
         stretch: true,
         title: Text('Statistics'),
         centerTitle: true,
         pinned: true,
-        leading: Icon(Icons.menu),
         actions: [
-          Icon(Icons.person, size: 28),
+          GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  )),
+              child: Icon(
+                Icons.person,
+                size: 28,
+              )),
           SizedBox(width: 12),
         ],
       );

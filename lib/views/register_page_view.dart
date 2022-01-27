@@ -63,6 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             controllerType: nameController,
                             hintText: 'Name',
                             inputType: TextInputType.name,
+                            
                           ),
                           MyTextField(
                             controllerType: emailController,
@@ -117,7 +118,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           FirestoreService().addUserData(
                             nameController.text.trim(),
                             emailController.text.trim(),
-                            passwordController.text.trim());
+                            passwordController.text.trim(),
+                            
+                          );
                            Navigator.of(context).pushNamed('/home');
                         } else {
                            Navigator.of(context).pushNamed('/welcome');
