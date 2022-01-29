@@ -59,85 +59,63 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Container(
-                height: 30.0,
-                width: 95.0,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  shadowColor: Colors.greenAccent,
-                  color: Colors.green,
-                  elevation: 7.0,
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => EditProfilePage(),
-                  )),
-                    child: Center(
-                      child: Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
+                    height: 30.0,
+                    width: 95.0,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      shadowColor: Colors.greenAccent,
+                      color: Colors.green,
+                      elevation: 7.0,
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => EditProfilePage(),
+                        )),
+                        child: Center(
+                          child: Text(
+                            'Edit Profile',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: 30.0,
-                width: 95.0,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  shadowColor: Colors.blueAccent,
-                  color: Colors.blue,
-                  elevation: 7.0,
-                  child: GestureDetector(
-                     onTap: () => Navigator.of(context).pop(MaterialPageRoute(
-                    builder: (context) => FitnessPage(),
-                  )),
-                    child: Center(
-                      child: Text(
-                        'Back Home',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    height: 30.0,
+                    width: 95.0,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      shadowColor: Colors.blueAccent,
+                      color: Colors.blue,
+                      elevation: 7.0,
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.of(context).pop(MaterialPageRoute(
+                          builder: (context) => FitnessPage(),
+                        )),
+                        child: Center(
+                          child: Text(
+                            'Back Home',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: 30.0,
-                width: 95.0,
-                child: Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  shadowColor: Colors.redAccent,
-                  color: Colors.red,
-                  elevation: 7.0,
-                  child: GestureDetector(
-                     onTap: () => Navigator.of(context).pop(MaterialPageRoute(
-                    builder: (context) => FitnessPage(),
-                  )),
-                    child: Center(
-                      child: Text(
-                        'Log Out',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
                 ],
               ),
             ],
           ),
         ),
       ],
-    )
-    );
+    ));
   }
 }
 
