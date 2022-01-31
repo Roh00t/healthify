@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthify/views/map_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/widgets/exercises_widget.dart';
 import 'package:healthify/widgets/line_chart_widget.dart';
@@ -26,7 +27,9 @@ class _FitnessPageState extends State<FitnessPage> {
         title: Text('Statistics'),
         centerTitle: true,
         leading: GestureDetector(
-                  child: Icon(Icons.menu)),
+           onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MapPage(),)),
+                  child: Icon(Icons.map_outlined)),
         pinned: true,
         actions: [
           GestureDetector(
