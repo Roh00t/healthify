@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healthify/services/location_service.dart';
 
@@ -114,21 +115,27 @@ class MapSampleState extends State<MapSample> {
               IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () async {
-                    var directions = await LocationService().getDirections(
-                        _originController.text, _destinationController.text);
-                    _goToPlace(
-                      directions['start_location']['lat'],
-                      directions['start_location']['lng'],
-                      directions['bounds_ne'],
-                      directions['bounds_sw'],
-                    );
-                    _setPolyline(directions['polyline_decoded']);
+                    try {
+                      var directions = await LocationService().getDirections(
+                          _originController.text, _destinationController.text);
+                      _goToPlace(
+                        directions['start_location']['lat'],
+                        directions['start_location']['lng'],
+                        directions['bounds_ne'],
+                        directions['bounds_sw'],
+                      );
+                      _setPolyline(directions['polyline_decoded']);
+                    } catch (e) {
+                      Fluttertoast.showToast(
+                          msg: e.message, gravity: ToastGravity.TOP);
+                      return null;
+                    }
                   })
             ],
           ),
           Expanded(
             child: GoogleMap(
-            myLocationButtonEnabled: false,
+              myLocationButtonEnabled: false,
               markers: _markers,
               polygons: _polygons,
               polylines: _polylines,
@@ -161,7 +168,10 @@ class MapSampleState extends State<MapSample> {
       CameraPosition(target: LatLng(lat, lng), zoom: 15),
     ));
     controller.animateCamera(CameraUpdate.newLatLngBounds(
-        LatLngBounds(southwest: LatLng(boundsSw['lat'],boundsSw['lng']), northeast: LatLng(boundsNe['lat'],boundsNe['lng'])), 25));
+        LatLngBounds(
+            southwest: LatLng(boundsSw['lat'], boundsSw['lng']),
+            northeast: LatLng(boundsNe['lat'], boundsNe['lng'])),
+        25));
     _setMarker(LatLng(lat, lng));
   }
 }

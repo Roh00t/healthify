@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -25,6 +26,7 @@ class LocationService {
     return results;
   }
   Future<Map<String, dynamic>> getDirections (String origin, String destination) async{
+    try{
     final String url =
         'https://maps.googleapis.com/maps/api/directions/json?origin=$origin&destination=$destination&key=$key';
     var response = await http.get(Uri.parse(url));
@@ -39,5 +41,11 @@ class LocationService {
     };
     // print(results);
     return results;
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return null;
+    }
+  
   }
+  
 }
