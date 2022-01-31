@@ -13,13 +13,13 @@ class _RecipeDetailState extends State<RecipeDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Icon(Icons.restaurant_menu),
             SizedBox(width: 10),
             Text('Food Recipes'),
           ],
         ),
+        centerTitle: false,
       ),
       
     );

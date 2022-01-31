@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
+import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/about_page_view.dart';
 import 'package:healthify/views/editProfile_page_view.dart';
 import 'package:healthify/views/fitness_page_view.dart';
@@ -24,6 +25,7 @@ void main() async{
   };
 WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
+await UserPreferences.init();
 runApp(MyApp());
 } 
 class MyApp extends StatelessWidget {

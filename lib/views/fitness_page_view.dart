@@ -25,6 +25,8 @@ class _FitnessPageState extends State<FitnessPage> {
         stretch: true,
         title: Text('Statistics'),
         centerTitle: true,
+        leading: GestureDetector(
+                  child: Icon(Icons.menu)),
         pinned: true,
         actions: [
           GestureDetector(

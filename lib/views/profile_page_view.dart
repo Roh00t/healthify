@@ -1,6 +1,11 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:healthify/models/user_model.dart';
+import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/editProfile_page_view.dart';
-import 'package:healthify/views/fitness_page_view.dart';
+import 'package:healthify/widgets/profile_appbar_widget.dart';
+
+import 'package:healthify/widgets/profile_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -10,125 +15,65 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        body: new Stack(
-      children: <Widget>[
-        ClipPath(
-          child: Container(
-            color: Colors.black.withOpacity(0.8),
-          ),
-          clipper: GetClipper(),
-        ),
-        Positioned(
-          width: 350.0,
-          left: 25.0,
-          top: MediaQuery.of(context).size.height / 5,
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: 150.0,
-                height: 150.0,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  image: DecorationImage(
-                      image:
-                          AssetImage('assets/images/defaultprofileimage.jpeg'),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(75.0),
-                  boxShadow: [BoxShadow(blurRadius: 7.0, color: Colors.black)],
-                ),
+    final user = UserPreferences.getUser();
+
+    return ThemeSwitchingArea(
+      child: Builder(
+        builder: (context) => Scaffold(
+          appBar: buildAppBar(context),
+          body: ListView(
+            physics: BouncingScrollPhysics(),
+            children: [
+              ProfileWidget(
+                imagePath: user.imagePath,
+                onClicked: () async {
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => EditProfilePage()),
+                  );
+                  setState(() {});
+                },
               ),
-              SizedBox(
-                height: 90.0,
-              ),
-              Text(
-                'Name',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 15.0,
-              ),
-              Text(
-                'Name',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
-              ),
-              SizedBox(
-                height: 25.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    height: 30.0,
-                    width: 95.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.greenAccent,
-                      color: Colors.green,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => EditProfilePage(),
-                        )),
-                        child: Center(
-                          child: Text(
-                            'Edit Profile',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Container(
-                    height: 30.0,
-                    width: 95.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.blueAccent,
-                      color: Colors.blue,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).pop(MaterialPageRoute(
-                          builder: (context) => FitnessPage(),
-                        )),
-                        child: Center(
-                          child: Text(
-                            'Back Home',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const SizedBox(height: 24),
+              buildName(user),
+              const SizedBox(height: 48),
+              buildAbout(user),
             ],
           ),
         ),
-      ],
-    ));
-  }
-}
-
-class GetClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = new Path();
-    path.lineTo(0.0, size.height / 1.9);
-    path.lineTo(size.width + 125, 0.0);
-    path.close();
-    return path;
+      ),
+    );
   }
 
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+  Widget buildName(User user) => Column(
+        children: [
+          Text(
+            user.name,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            user.email,
+            style: TextStyle(color: Colors.grey),
+          )
+        ],
+      );
+
+
+  Widget buildAbout(User user) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 48),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'About',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              user.about,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
 }
