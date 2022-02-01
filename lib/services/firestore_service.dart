@@ -23,11 +23,11 @@ class FirestoreService {
       }
   }
 
-  Future<List<User>> readUserData() async {
-    List<User> userList = [];
+  Future<List<UserModel>> readUserData() async {
+    List<UserModel> userList = [];
     QuerySnapshot snapshot = await userCollection.get();
     snapshot.docs.forEach((document) {
-      User user = User.fromMap(document.data());
+      UserModel user = UserModel.fromMap(document.data());
       userList.add(user);
     });
     print('Userlist: $userList');

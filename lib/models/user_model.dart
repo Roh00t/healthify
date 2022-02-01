@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   String uid;
   String name;
   String email;
@@ -6,9 +6,9 @@ class User {
   String about;
   String imagePath;
   bool isDarkMode;
-  User({this.uid, this.name, this.email, this.password, this.about, this.imagePath, this.isDarkMode});
+  UserModel({this.uid, this.name, this.email, this.password, this.about, this.imagePath, this.isDarkMode});
 
-  User.fromMap(Map<String, dynamic> data) {
+  UserModel.fromMap(Map<String, dynamic> data) {
     uid = data['uid'];
     name = data['name'];
     email = data['email'];
@@ -29,14 +29,14 @@ class User {
       'isDarkMode':isDarkMode
     };
   }
-  User copy({
+  UserModel copy({
     String imagePath,
     String name,
     String email,
     String about,
     bool isDarkMode,
   }) =>
-      User(
+      UserModel(
         imagePath: imagePath ?? this.imagePath,
         name: name ?? this.name,
         email: email ?? this.email,
@@ -44,7 +44,7 @@ class User {
         isDarkMode: isDarkMode ?? this.isDarkMode,
       );
 
-  static User fromJson(Map<String, dynamic> json) => User(
+  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
         imagePath: json['imagePath'],
         name: json['name'],
         email: json['email'],
