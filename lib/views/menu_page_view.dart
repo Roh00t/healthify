@@ -30,17 +30,6 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.restaurant_menu),
-            SizedBox(width: 10),
-            Text('Food Recipes'),
-          ],
-        ),
-      ),
-      
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
