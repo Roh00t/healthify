@@ -427,8 +427,6 @@ PODS:
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
   - Flutter (1.0.0)
-  - flutter_app_badger (0.0.1):
-    - Flutter
   - flutter_local_notifications (0.0.1):
     - Flutter
   - fluttertoast (0.0.2):
@@ -522,7 +520,6 @@ DEPENDENCIES:
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
-  - flutter_app_badger (from `.symlinks/plugins/flutter_app_badger/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
@@ -571,8 +568,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
-  flutter_app_badger:
-    :path: ".symlinks/plugins/flutter_app_badger/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   fluttertoast:
@@ -608,7 +603,6 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 82c4a48638f53f7b184f3cc9f6cd2cbe533ab316
   FirebaseStorage: 452c98c31ccb40b819764bf3039426c4388d9939
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  flutter_app_badger: 65de4d6f0c34a891df49e6cfb8a1c0496426fa68
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   google_maps_flutter: 279865bd07e2d8751f43a3bc64bac7f6075d0c93
