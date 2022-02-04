@@ -1,5 +1,6 @@
-
+import 'dart:async';
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
@@ -17,24 +18,50 @@ import 'package:healthify/views/setting_page_view.dart';
 import 'package:healthify/views/welcome_page_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 const bool kReleaseMode = bool.fromEnvironment('dart.vm.product');
-void main() async{
+void main() async {
   FlutterError.onError = (FlutterErrorDetails details) {
     FlutterError.presentError(details);
-    if (kReleaseMode)
-      exit(1);
+    if (kReleaseMode) exit(1);
   };
-WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp();
-await UserPreferences.init();
-runApp(MyApp());
-} 
-class MyApp extends StatelessWidget {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await UserPreferences.init();
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // ignore: cancel_subscriptions
+  StreamSubscription<User> user;
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    user.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers:[
-        Provider<AuthService>(create: (_) => AuthService(),
+      providers: [
+        Provider<AuthService>(
+          create: (_) => AuthService(),
         ),
       ],
       child: MaterialApp(
@@ -44,23 +71,21 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           scaffoldBackgroundColor: kBackgroundColor,
           primarySwatch: Colors.blue,
-          
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: WelcomePage(),
+        home: FirebaseAuth.instance.currentUser == null ? WelcomePage() : HomePage(),
         routes: {
-          '/home':(context)=> HomePage(),
-          '/welcome':(context)=> WelcomePage(),
-          '/login':(context)=> LoginPage(),
-          '/register':(context)=> RegisterPage(),
-          '/about':(context)=>AboutPage(),
-          '/fitness':(context)=>FitnessPage(),
-          '/menu':(context)=>MenuPage(),
-          '/settings':(context)=>SettingsPage(),
-          '/profile':(context)=> ProfilePage(),
-          '/editProfile':(context)=>EditProfilePage(),
+          '/home': (context) => HomePage(),
+          '/welcome': (context) => WelcomePage(),
+          '/login': (context) => LoginPage(),
+          '/register': (context) => RegisterPage(),
+          '/about': (context) => AboutPage(),
+          '/fitness': (context) => FitnessPage(),
+          '/menu': (context) => MenuPage(),
+          '/settings': (context) => SettingsPage(),
+          '/profile': (context) => ProfilePage(),
+          '/editProfile': (context) => EditProfilePage(),
         },
-        
       ),
     );
   }

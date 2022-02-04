@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 class AuthService {
   final _firebaseAuth = FirebaseAuth.instance;
   User loggedInUser;
@@ -9,7 +10,6 @@ class AuthService {
       UserCredential ucred = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = ucred.user;
-      print("Signed In successful! userid: $ucred.user.uid, user: $user.");
       return user;
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
@@ -39,8 +39,8 @@ class AuthService {
 //Checking if User is logged in
   void getCurrentUser() async {
     try {
-      var user =  _firebaseAuth.currentUser;
-      if(user != null){
+      var user = _firebaseAuth.currentUser;
+      if (user != null) {
         loggedInUser = user;
         print(loggedInUser.email);
       }
@@ -52,8 +52,17 @@ class AuthService {
   //User Sign out
   Future<void> signOut() async {
     try {
-      await _firebaseAuth.signOut();
-      print('Signed Out successful!');
+      // await _firebaseAuth.signOut();
+      // print('Signed Out successful!');
+      FirebaseAuth.instance
+  .authStateChanges()
+  .listen((User uid) {
+    if (uid == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
       return null;
