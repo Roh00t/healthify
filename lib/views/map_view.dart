@@ -5,6 +5,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:healthify/services/location_service.dart';
+import 'package:healthify/views/home_page_view.dart';
 
 class MapPage extends StatelessWidget {
   @override
@@ -85,6 +86,16 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> HomePage()));
+          },
+          icon: Image(
+            width: 24,
+            color: Colors.black,
+            image: AssetImage('assets/images/back_arrow.png'),
+          ),
+        ),
         title: Text('Google Maps'),
         centerTitle: true,
       ),
@@ -98,16 +109,12 @@ class MapSampleState extends State<MapSample> {
                     TextFormField(
                       controller: _originController,
                       decoration: InputDecoration(hintText: 'Origin'),
-                      onChanged: (value) {
-                        print(value);
-                      },
+                      onChanged: (value) {},
                     ),
                     TextFormField(
                       controller: _destinationController,
                       decoration: InputDecoration(hintText: 'Destination'),
-                      onChanged: (value) {
-                        print(value);
-                      },
+                      onChanged: (value) {},
                     ),
                   ],
                 ),

@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
           tooltip: 'Sign Out',
           onPressed: () async {
             await FirebaseAuth.instance.signOut();
-            Navigator.of(context).pop('/login');
+            Navigator.of(context).pushReplacementNamed('/welcome');
           },
         ),
         ),

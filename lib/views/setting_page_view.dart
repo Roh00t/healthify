@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/services/notification_api_service.dart';
-import 'package:healthify/views/home_page_view.dart';
+
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -15,8 +15,7 @@ class _SettingsPageState extends State<SettingsPage> {
     listenNotications();
   }
 
-  void listenNotications() => NotificationApi.onNotification.stream.listen(onClickedNotification);
-  void onClickedNotification(String payload)=> Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+  void listenNotications() => NotificationApi.onNotification.stream;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
