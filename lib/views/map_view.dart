@@ -32,7 +32,7 @@ class MapSampleState extends State<MapSample> {
   Set<Polygon> _polygons = Set<Polygon>();
   Set<Polyline> _polylines = Set<Polyline>();
   List<LatLng> polygonLatLng = <LatLng>[];
-  int _polygonIdCounter = 1;
+  // int _polygonIdCounter = 1;
   int _polylineIdCounter = 1;
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -54,17 +54,17 @@ class MapSampleState extends State<MapSample> {
     });
   }
 
-  void _setPolygon() {
-    final String polygonIdVal = 'polygon_$_polygonIdCounter';
-    _polygonIdCounter++;
-    _polygons.add(
-      Polygon(
-          polygonId: PolygonId(polygonIdVal),
-          points: polygonLatLng,
-          strokeWidth: 2,
-          fillColor: Colors.transparent),
-    );
-  }
+  // void _setPolygon() {
+  //   final String polygonIdVal = 'polygon_$_polygonIdCounter';
+  //   _polygonIdCounter++;
+  //   _polygons.add(
+  //     Polygon(
+  //         polygonId: PolygonId(polygonIdVal),
+  //         points: polygonLatLng,
+  //         strokeWidth: 2,
+  //         fillColor: Colors.transparent),
+  //   );
+  // }
 
   void _setPolyline(List<PointLatLng> points) {
     final String polylineIdVal = 'polyline_$_polylineIdCounter';
@@ -151,12 +151,12 @@ class MapSampleState extends State<MapSample> {
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },
-              onTap: (point) {
-                setState(() {
-                  polygonLatLng.add(point);
-                  _setPolygon();
-                });
-              },
+              // onTap: (point) {
+              //   setState(() {
+              //     polygonLatLng.add(point);
+              //     _setPolygon();
+              //   });
+              // },
             ),
           ),
         ],

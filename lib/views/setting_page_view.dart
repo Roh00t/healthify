@@ -23,43 +23,22 @@ class _SettingsPageState extends State<SettingsPage> {
       home: Scaffold(
         body: Container(
           padding: EdgeInsets.all(32),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(
-                height: 24,
-              ),
-              Text(
-                'Manage Nofications',
-                style: TextStyle(
-                    fontSize: 42,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              ElevatedButton(  
-                child: Text("Test Notification", style: TextStyle(fontSize: 20.0),),  
-                
-                onPressed: () => NotificationApi.showNotification(
-                  title: 'App Developer',
-                  body: 'Hey! Your Nofications are working!',
-                  payload: ''
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 24,
+                ),
+                ElevatedButton(  
+                  child: Text("Test Notification", style: TextStyle(fontSize: 20.0),),  
+                  onPressed: () => NotificationApi.showNotification(
+                    title: 'Healthify',
+                    body: 'Hey! Your Nofications are working!',
+                    payload: ''
+                  ),  
                 ),  
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              ElevatedButton(  
-                child: Text("Schedule Notification", style: TextStyle(fontSize: 20.0),),  
-                
-                onPressed: () => NotificationApi.showNotification(
-                  title: 'App Developer',
-                  body: 'Hey! Your Nofications are working!',
-                  payload: ''
-                ),  
-              ),    
-            ],
+              ],
+            ),
           ),
         ),
       ),
