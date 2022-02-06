@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthify/widgets/my_text_button.dart';
 import '../constants.dart';
-import '../widgets/widget.dart';
+
 
 class WelcomePage extends StatelessWidget {
   @override

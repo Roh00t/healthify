@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
   StreamSubscription<User> user;
   void initState() {
     super.initState();
+    //This will check if the user has signed in or signed out
     user = FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {
         print('User is currently signed out!');
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        //If user is not signed in, user will be redirected to the welcomepage
         home: FirebaseAuth.instance.currentUser == null ? WelcomePage() : HomePage(),
         routes: {
           '/home': (context) => HomePage(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//These colours are used throughout the app
 // Colors
 const kBackgroundColor = Color(0xff191720);
 const NavBackgroundColor = Colors.blue;
