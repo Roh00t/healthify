@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/services/notification_api_service.dart';
-
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:healthify/widgets/icon_widget.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -21,27 +22,63 @@ class _SettingsPageState extends State<SettingsPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-          padding: EdgeInsets.all(32),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 24,
-                ),
-                ElevatedButton(  
-                  child: Text("Test Notification", style: TextStyle(fontSize: 20.0),),  
-                  onPressed: () => NotificationApi.showNotification(
-                    title: 'Healthify',
-                    body: 'Hey! Your Nofications are working!',
-                    payload: ''
-                  ),  
-                ),  
-              ],
-            ),
+        body: SafeArea(
+          child: ListView(
+            children: <Widget>[
+              SettingsGroup(
+                title: 'General',
+                children: [
+                  
+                  buildDeleteAccount()
+                ],
+              ),
+              const SizedBox(height: 32,),
+              SettingsGroup(
+                title: 'Feedback',
+                children: [
+                  const SizedBox(height: 8,),
+                  buildReportBug(context),
+                  buildSendFeedback(context),
+                ],
+              ),
+              
+            ],
           ),
         ),
       ),
     );
   }
+
+
+//For Notifications
+  Widget testNotification() => ElevatedButton(
+        child: Text(
+          "Test Notification",
+          style: TextStyle(fontSize: 20.0),
+        ),
+        onPressed: () => NotificationApi.showNotification(
+            title: 'Healthify',
+            body: 'Hey! Your Nofications are working!',
+            payload: ''),
+      );
+      Widget buildDeleteAccount()=> SimpleSettingsTile(
+        title: 'Delete Account',
+        subtitle: '',
+        leading: IconWidget(icon: Icons.delete,color: Colors.pink),
+        onTap: () {},
+      );
+       Widget buildReportBug(BuildContext context)=> SimpleSettingsTile(
+        title: 'Report Bug',
+        subtitle: '',
+        leading: IconWidget(icon: Icons.bug_report,color: Colors.red),
+        onTap: () {},
+      );
+       Widget buildSendFeedback(BuildContext context)=> SimpleSettingsTile(
+        title: 'Send Feedback',
+        subtitle: '',
+        leading: IconWidget(icon: Icons.feedback,color: Colors.orange),
+        onTap: () {},
+      );
 }
+
+
