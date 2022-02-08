@@ -3,6 +3,8 @@ import 'package:healthify/services/notification_api_service.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:healthify/widgets/icon_widget.dart';
 
+import 'about_page_view.dart';
+
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -29,7 +31,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: 'General',
                 children: [
                   
-                  buildDeleteAccount()
+                  buildDeleteAccount(),
+                  AboutPage(),
+
                 ],
               ),
               const SizedBox(height: 32,),
@@ -41,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   buildSendFeedback(context),
                 ],
               ),
-              
+              testNotification()
             ],
           ),
         ),

@@ -8,7 +8,7 @@ class IconWidget  extends StatelessWidget{
   const IconWidget({
     Key key,
     this.icon,
-    this.color
+    this.color,
   }) : super(key: key);
 
   @override

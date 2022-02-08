@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/user_preferences.dart';
@@ -45,8 +46,10 @@ class _MyAppState extends State<MyApp> {
     user = FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {
         print('User is currently signed out!');
+        Fluttertoast.showToast(msg: 'You are signed out', gravity: ToastGravity.TOP);
       } else {
         print('User is signed in!');
+        Fluttertoast.showToast(msg: 'Welcome Back' , gravity: ToastGravity.TOP);
       }
     });
   }
