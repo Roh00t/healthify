@@ -22,16 +22,16 @@ class FirestoreService {
       }
   }
 
-  Future<List<UserModel>> readUserData() async {
+    Future<List<UserModel>> readUserData() async {
     List<UserModel> userList = [];
     QuerySnapshot snapshot = await userCollection.get();
     snapshot.docs.forEach((document) {
       UserModel user = UserModel.fromMap(document.data());
       userList.add(user);
     });
-    print('Userlist: $userList');
+    print('User: $userList');
     return userList;
-  }
+  } 
 //for your reference
   Future<void> updateUserData(
       String userName, String userEmail, String userPassword) async {
@@ -44,9 +44,14 @@ class FirestoreService {
       'password': userPassword,
     });
   } 
+  Future<void> deleteUserData(String docId) async {
+    userCollection.doc(docId).delete();
+    print('deleting' + docId);
+  } 
 
-  //for your reference
-  Future<void> deleteUserData() async {
+
+  //Delete All Users
+  Future<void> deleteAllUserData() async {
     await userCollection.get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {
         ds.reference.delete();
