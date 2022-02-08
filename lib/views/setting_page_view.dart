@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/services/notification_api_service.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:healthify/views/feedback_page_view.dart';
 import 'package:healthify/widgets/icon_widget.dart';
 
 import 'about_page_view.dart';
@@ -81,7 +82,9 @@ class _SettingsPageState extends State<SettingsPage> {
         title: 'Send Feedback',
         subtitle: '',
         leading: IconWidget(icon: Icons.feedback,color: Colors.orange),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> FeedbackPage()));
+        },
       );
 }
 
