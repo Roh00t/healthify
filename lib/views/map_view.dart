@@ -36,14 +36,14 @@ class MapSampleState extends State<MapSample> {
   int _polylineIdCounter = 1;
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(1.3804648347085677, 103.84899161534163),
     zoom: 14.4746,
   );
 
   @override
   void initState() {
     super.initState();
-    _setMarker(LatLng(37.42796133580664, -122.085749655962));
+    _setMarker(LatLng(1.3804648347085677, 103.84899161534163));
   }
 
   void _setMarker(LatLng point) {
