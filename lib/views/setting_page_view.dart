@@ -42,7 +42,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: 'Feedback',
                 children: [
                   const SizedBox(height: 8,),
-                  buildReportBug(context),
                   buildSendFeedback(context),
                 ],
               ),
@@ -65,12 +64,6 @@ class _SettingsPageState extends State<SettingsPage> {
             title: 'Healthify',
             body: 'Hey! Your Nofications are working!',
             payload: ''),
-      );
-       Widget buildReportBug(BuildContext context)=> SimpleSettingsTile(
-        title: 'Report Bug',
-        subtitle: '',
-        leading: IconWidget(icon: Icons.bug_report,color: Colors.red),
-        onTap: () {},
       );
        Widget buildSendFeedback(BuildContext context)=> SimpleSettingsTile(
         title: 'Send Feedback',
