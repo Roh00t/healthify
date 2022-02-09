@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthify/views/addrecord_page.dart';
-import 'package:healthify/views/showrecords_page.dart';
+import 'package:healthify/views/addFeedback_page_view.dart';
+import 'package:healthify/views/showFeedback_page_view.dart';
 
 class FeedbackPage extends StatefulWidget {
   @override

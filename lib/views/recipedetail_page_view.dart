@@ -16,7 +16,7 @@ class _RecipeDetailState extends State<RecipeDetail> {
           children: [
             Icon(Icons.restaurant_menu),
             SizedBox(width: 10),
-            Text('Food Recipes'),
+            Text('Search Food Recipes'),
           ],
         ),
         centerTitle: false,

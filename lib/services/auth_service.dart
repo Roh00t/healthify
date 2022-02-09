@@ -49,20 +49,82 @@ class AuthService {
     }
   }
 
+  //GET UID
+  Future<String> getCurrentUID() async {
+    try {
+      return (_firebaseAuth.currentUser).uid;
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return null;
+    } catch (e) {
+      print(e.message);
+      return null;
+    }
+  }
+
+  //GET CURRENT USER
+  Future currentUser() async {
+    try {
+      // ignore: await_only_futures
+      return await _firebaseAuth.currentUser;
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return null;
+    } catch (e) {
+      print(e.message);
+      return null;
+    }
+  }
+
+  //UPDATE NAME
+  Future<void> updateDisplayName(String displayName) async {
+    try {
+      // ignore: await_only_futures
+      var user = await _firebaseAuth.currentUser;
+
+      // ignore: deprecated_member_use
+      user.updateProfile(
+        displayName: displayName,
+      );
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return null;
+    } catch (e) {
+      print(e.message);
+      return null;
+    }
+  }
+
+  //UPDATE EMAIL
+  Future<void> updateEmail(String email) async {
+    try {
+      // ignore: await_only_futures
+      var user = await _firebaseAuth.currentUser;
+
+      user.updateEmail(
+        email,
+      );
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return null;
+    } catch (e) {
+      print(e.message);
+      return null;
+    }
+  }
+
   //User Sign out
   Future<void> signOut() async {
     try {
       // await _firebaseAuth.signOut();
       // print('Signed Out successful!');
-      FirebaseAuth.instance
-  .authStateChanges()
-  .listen((User uid) {
-    if (uid == null) {
-      print('User is currently signed out!');
-    } else {
-      print('User is signed in!');
-    }
-  });
+      FirebaseAuth.instance.authStateChanges().listen((User uid) {
+        if (uid == null) {
+          print('User is currently signed out!');
+        } else {
+          print('User is signed in!');
+        }
+      });
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
       return null;

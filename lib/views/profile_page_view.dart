@@ -1,79 +1,93 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:healthify/models/user_model.dart';
-import 'package:healthify/services/user_preferences.dart';
-import 'package:healthify/views/editProfile_page_view.dart';
-import 'package:healthify/widgets/profile_appbar_widget.dart';
-
-import 'package:healthify/widgets/profile_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthify/services/auth_service.dart';
+import 'package:healthify/services/firestore_service.dart';
+import 'package:healthify/views/home_page_view.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfilePage createState() => _ProfilePage();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePage extends State<ProfilePage> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.getUser();
-
-    return ThemeSwitchingArea(
-      child: Builder(
-        builder: (context) => Scaffold(
-          appBar: buildAppBar(context),
-          body: ListView(
-            physics: BouncingScrollPhysics(),
-            children: [
-              ProfileWidget(
-                imagePath: user.imagePath,
-                onClicked: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => EditProfilePage()),
-                  );
-                  setState(() {});
-                },
-              ),
-              const SizedBox(height: 24),
-              buildName(user),
-              const SizedBox(height: 48),
-              buildAbout(user),
-            ],
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('My Profile'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+            child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: <Widget>[
+                    FutureBuilder(
+                        future: AuthService().currentUser(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return displayUserInformation(context, snapshot);
+                          } else {
+                            return CircularProgressIndicator();
+                          }
+                        })
+                  ],
+                ))));
   }
 
-  Widget buildName(UserModel user) => Column(
-        children: [
-          Text(
-            user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+  Widget displayUserInformation(context, snapshot) {
+    final user = snapshot.data;
+
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: TextField(
+            controller: nameController..text = user.displayName,
+            decoration: InputDecoration(
+              labelText: "Username:",
+            ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            user.email,
-            style: TextStyle(color: Colors.grey),
-          )
-        ],
-      );
-
-
-  Widget buildAbout(UserModel user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'About',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              user.about,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
         ),
-      );
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: TextField(
+            controller: emailController..text = user.email,
+            decoration: InputDecoration(
+              labelText: "Email:",
+            ),
+          ),
+        ),
+      
+        // ignore: deprecated_member_use
+        RaisedButton(
+          onPressed: () async {
+            try {
+               if (user != null) {
+                 await AuthService().updateDisplayName(nameController.text);
+            Navigator.pop(context);
+            await AuthService().updateEmail(emailController.text);
+           await FirestoreService().updateUserData(
+                            nameController.text.trim(),
+                            emailController.text.trim(),);
+               }else{
+                  Fluttertoast.showToast(msg:'Please Log In Again', gravity: ToastGravity.TOP);
+                  return Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomePage(),));
+               }
+            
+            }catch (e){
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomePage(),));
+    }
+          },
+          child: Text("Save Changes"),
+        )
+      ],
+    );
+  }
 }

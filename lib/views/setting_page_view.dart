@@ -32,7 +32,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: 'General',
                 children: [
                   
-                  buildDeleteAccount(),
+          
                   AboutPage(),
 
                 ],
@@ -65,12 +65,6 @@ class _SettingsPageState extends State<SettingsPage> {
             title: 'Healthify',
             body: 'Hey! Your Nofications are working!',
             payload: ''),
-      );
-      Widget buildDeleteAccount()=> SimpleSettingsTile(
-        title: 'Delete Account',
-        subtitle: '',
-        leading: IconWidget(icon: Icons.delete,color: Colors.pink),
-        onTap: () {},
       );
        Widget buildReportBug(BuildContext context)=> SimpleSettingsTile(
         title: 'Report Bug',

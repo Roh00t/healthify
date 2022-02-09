@@ -7,22 +7,22 @@ class FirestoreService {
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('users');
   Future<void> addUserData(
-    String userName, String userEmail, String userPassword) async {
-      try {
-    var docRef = FirestoreService().userCollection.doc();
-    print('added User: ' + docRef.id);
-    await userCollection.doc(docRef.id).set({
-      'uid': docRef.id,
-      'name': userName,
-      'email': userEmail,
-      'password': userPassword,
-    });
-      } catch(e){
-        print(e.message);
-      }
+      String userName, String userEmail, String userPassword) async {
+    try {
+      var docRef = FirestoreService().userCollection.doc();
+      print('added User: ' + docRef.id);
+      await userCollection.doc(docRef.id).set({
+        'uid': docRef.id,
+        'name': userName,
+        'email': userEmail,
+        'password': userPassword,
+      });
+    } catch (e) {
+      print(e.message);
+    }
   }
 
-    Future<List<UserModel>> readUserData() async {
+  Future<List<UserModel>> readUserData() async {
     List<UserModel> userList = [];
     QuerySnapshot snapshot = await userCollection.get();
     snapshot.docs.forEach((document) {
@@ -31,31 +31,45 @@ class FirestoreService {
     });
     print('User: $userList');
     return userList;
-  } 
+  }
+
 //for your reference
-  Future<void> updateUserData(
-      String userName, String userEmail, String userPassword) async {
+  Future<void> updateUserData(String userName, String userEmail) async {
+    try{
     var docRef = FirestoreService().userCollection.doc();
     print('update docRef: ' + docRef.id);
-    await userCollection.doc(docRef.id).update({
+    await userCollection.doc(docRef.id).set({
       'uid': docRef.id,
       'name': userName,
       'email': userEmail,
-      'password': userPassword,
     });
-  } 
+     } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
   Future<void> deleteUserData(String docId) async {
+    try {
     userCollection.doc(docId).delete();
     print('deleting' + docId);
-  } 
-
+     } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 
   //Delete All Users
   Future<void> deleteAllUserData() async {
-    await userCollection.get().then((snapshot) {
-      for (DocumentSnapshot ds in snapshot.docs) {
-        ds.reference.delete();
-      }
-    });
-  } 
+    try {
+      await userCollection.get().then((snapshot) {
+        for (DocumentSnapshot ds in snapshot.docs) {
+          ds.reference.delete();
+        }
+      });
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }
