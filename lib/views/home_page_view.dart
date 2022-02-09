@@ -7,6 +7,7 @@ import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/fitness_page_view.dart';
 import 'package:healthify/views/menu_page_view.dart';
 import 'package:healthify/views/setting_page_view.dart';
+import 'package:healthify/views/welcome_page_view.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           tooltip: 'Sign Out',
           onPressed: () async {
             await FirebaseAuth.instance.signOut();
-            Navigator.of(context).pushReplacementNamed('/welcome');
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> WelcomePage()));
           },
         ),
         ),
