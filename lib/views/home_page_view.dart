@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _listPages..add(FitnessPage())..add(MenuPage())..add(SearchRecipe())..add(SettingsPage());
+    _listPages..add(FitnessPage())..add(MenuPage())..add(SearchScreen())..add(SettingsPage());
   }
 
   @override
