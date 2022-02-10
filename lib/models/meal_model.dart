@@ -5,6 +5,7 @@ class Meal {
   int readyInMinutes;
   int servings;
   String sourceUrl;
+  String imageUrl;
 
   Meal(
       {this.id,
@@ -12,7 +13,7 @@ class Meal {
       this.title,
       this.readyInMinutes,
       this.servings,
-      this.sourceUrl});
+      this.sourceUrl, this.imageUrl});
 
   Meal.fromMap(Map<String, dynamic> json) {
     id = json['id'];
@@ -21,5 +22,6 @@ class Meal {
     readyInMinutes = json['readyInMinutes'];
     servings = json['servings'];
     sourceUrl = json['sourceUrl'];
+    imageUrl = json['imageUrl'];
   }
 }

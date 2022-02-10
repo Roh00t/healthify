@@ -44,6 +44,7 @@ class _MealsScreenState extends State<MealsScreen> {
               fontWeight: FontWeight.w600,
             ),
           ),
+          SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -63,6 +64,7 @@ class _MealsScreenState extends State<MealsScreen> {
               ),
             ],
           ),
+          SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -107,7 +109,7 @@ class _MealsScreenState extends State<MealsScreen> {
         alignment: Alignment.center,
         children: <Widget>[
           Container(
-            height: 220.0,
+            height: 150.0,
             width: double.infinity,
             margin: EdgeInsets.symmetric(
               horizontal: 20.0,
@@ -118,11 +120,11 @@ class _MealsScreenState extends State<MealsScreen> {
               vertical: 10.0,
             ),
             decoration: BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                image: NetworkImage(meal.sourceUrl),
-                fit: BoxFit.cover,
-              ),
+              color: Colors.orange,
+              // image: DecorationImage(
+              //   image: NetworkImage(meal.sourceUrl),
+              //   fit: BoxFit.cover,
+              // ),
               borderRadius: BorderRadius.circular(15.0),
               boxShadow: [
                 BoxShadow(
@@ -142,16 +144,18 @@ class _MealsScreenState extends State<MealsScreen> {
                 Text(
                   mealType,
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                     letterSpacing: 1.5,
                   ),
                 ),
                 Text(
                   meal.title,
                   style: TextStyle(
-                    fontSize: 24.0,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.w600,
+                    
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
