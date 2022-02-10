@@ -15,7 +15,8 @@ class _AddFeedbackPageState extends State<AddFeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Saving Feedback Record'), actions: <Widget>[]),
+      appBar:
+          AppBar(title: Text('Saving Feedback Record'), actions: <Widget>[]),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -26,15 +27,13 @@ class _AddFeedbackPageState extends State<AddFeedbackPage> {
                 TextFormField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Name'),
-                  validator: (val) =>
-                      val.length == 0 ? "Enter Name" : null,
+                  validator: (val) => val.length == 0 ? "Enter Name" : null,
                   onSaved: (val) => this.feedbackdisplayName = val,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Title'),
-                  validator: (val) =>
-                      val.length == 0 ? 'Enter Title' : null,
+                  validator: (val) => val.length == 0 ? 'Enter Title' : null,
                   onSaved: (val) => this.feedbackTitle = val,
                 ),
                 TextFormField(
@@ -45,12 +44,21 @@ class _AddFeedbackPageState extends State<AddFeedbackPage> {
                   onSaved: (val) => this.feedbackDescription = val,
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  child: ElevatedButton(
-                    onPressed: _submit,
-                    child: Text('Submit Feedback'),
-                  ),
-                )
+                    margin: const EdgeInsets.only(top: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: _submit,
+                          child: Text('Submit Feedback'),
+                        ),
+                      
+                        ElevatedButton(
+                          onPressed:()=> Navigator.of(context).pop(),
+                          child: Text('Cancel'),
+                        ),
+                      ],
+                    ))
               ],
             ),
           ),
@@ -65,7 +73,8 @@ class _AddFeedbackPageState extends State<AddFeedbackPage> {
     } else {
       return null;
     }
-    FirestoreFeedbackService().addFeedbackData(feedbackdisplayName, feedbackTitle, feedbackDescription);
+    FirestoreFeedbackService().addFeedbackData(
+        feedbackdisplayName, feedbackTitle, feedbackDescription);
     Fluttertoast.showToast(
         msg: "Data saved successfully", gravity: ToastGravity.TOP);
   } //_submit

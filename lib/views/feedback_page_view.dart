@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/views/addFeedback_page_view.dart';
+import 'package:healthify/views/sendEmail.dart';
 import 'package:healthify/views/showFeedback_page_view.dart';
 
 class FeedbackPage extends StatefulWidget {
@@ -11,11 +12,21 @@ class _FeedbackPageState extends State<FeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('App Feedback System'),
+      leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Image(
+            width: 24,
+            color: Colors.white,
+            image: AssetImage('assets/images/back_arrow.png'),
+          ),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("FeedBack System", style: TextStyle(fontSize: 30)),
-          SizedBox(height: 80),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -28,10 +39,19 @@ class _FeedbackPageState extends State<FeedbackPage> {
                       MaterialPageRoute(builder: (context) => AddFeedbackPage()));
                 },
               ),
+               IconButton(
+                icon: Icon(Icons.email),
+                iconSize: 60,
+                tooltip: 'Send Email',
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => SendEmail()));
+                },
+              ),
               IconButton(
                 icon: Icon(Icons.list),
                 iconSize: 60,
-                tooltip: 'view Feedbacks',
+                tooltip: 'View Feedbacks',
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => ViewFeedbackPage()));
@@ -40,14 +60,6 @@ class _FeedbackPageState extends State<FeedbackPage> {
             ],
           ),
         ],
-      ),
-       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.blueAccent,
-        tooltip: 'Back',
-        onPressed: () async {
-          Navigator.of(context).pop();
-        },
       ),
     );
   }

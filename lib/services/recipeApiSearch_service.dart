@@ -54,7 +54,6 @@ class ApiService {
       await Future.delayed(Duration(milliseconds: 200));
       //http.get to retrieve the response
       var response = await http.get(uri, headers: headers);
-      print(response);
       //decode the body of the response into a map
       Map<String, dynamic> data = json.decode(response.body);
       print(data);

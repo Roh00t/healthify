@@ -8,4 +8,8 @@ class Storage {
     String downloadURL = await storage.ref('$imageName').getDownloadURL();
     return downloadURL;
   }
+  Future <String> downloadvideoURL(String videoName) async{
+    String downloadvideoURL = await storage.ref('$videoName').getDownloadURL();
+    return downloadvideoURL;
+  }
 }
