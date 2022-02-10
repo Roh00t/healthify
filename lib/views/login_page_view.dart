@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthify/constants.dart';
+
 import 'package:healthify/services/auth_service.dart';
 
 import 'package:healthify/widgets/my_password_field.dart';
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: Color(0xff191720),
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -55,14 +55,21 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Text(
                             "Welcome back.",
-                            style: kHeadline,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 34,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
                             "You've been missed!",
-                            style: kBodyText2,
+                            style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                        ),
                           ),
                           SizedBox(
                             height: 60,
@@ -89,15 +96,21 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Text(
                           "Don't have an account? ",
-                          style: kBodyText,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {
-                             Navigator.of(context).pushNamed('/register');
+                            Navigator.of(context).pushNamed('/register');
                           },
                           child: Text(
                             'Register',
-                            style: kBodyText.copyWith(
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                            ).copyWith(
                               color: Colors.white,
                             ),
                           ),
@@ -111,23 +124,23 @@ class _LoginPageState extends State<LoginPage> {
                       buttonName: 'Sign In',
                       onTap: () async {
                         try {
-                        var reguser = await authService.signIn(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                        if (reguser != null) {
-                          print("User signed in successfully");
-                          Navigator.of(context).pushNamed('/home');
-                              
-                        }else{
-                          print("User not found");
-                           Navigator.of(context).pushNamed('/welcome');
-                        }
+                          var reguser = await authService.signIn(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          );
+                          if (reguser != null) {
+                            print("User signed in successfully");
+                            Navigator.of(context).pushNamed('/home');
+                          } else {
+                            print("User not found");
+                            Navigator.of(context).pushNamed('/welcome');
+                          }
                         } catch (e) {
-                          print("This is an exception from Login Page at Login Btn "+e.message);
+                          print(
+                              "This is an exception from Login Page at Login Btn " +
+                                  e.message);
                         }
                       },
-                      
                       bgColor: Colors.white,
                       textColor: Colors.black87,
                     ),

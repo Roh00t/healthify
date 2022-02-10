@@ -1,34 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+class MyThemes extends ChangeNotifier {
+  ThemeData _selectedTheme;
 
-//These colours are used throughout the app
-// Colors
-const kBackgroundColor = Color(0xff191720);
-const NavBackgroundColor = Colors.blue;
-const homeBackgroundColor = Colors.blue;
-const kTextFieldFill = Color(0xff1E1C24);
-// TextStyles
-const kHeadline = TextStyle(
-  color: Colors.white,
-  fontSize: 34,
-  fontWeight: FontWeight.bold,
-);
-
-const kBodyText = TextStyle(
-  color: Colors.grey,
-  fontSize: 15,
-);
-
-const kButtonText = TextStyle(
-  color: Colors.black87,
-  fontSize: 16,
-  fontWeight: FontWeight.bold,
-);
-
-const kBodyText2 =
-    TextStyle(fontSize: 28, fontWeight: FontWeight.w500, color: Colors.white);
-
-//For User profile and Edit Profile
-class MyThemes {
   static final primary = Colors.blue;
   static final primaryColor = Colors.blue.shade300;
 
@@ -46,4 +20,31 @@ class MyThemes {
     colorScheme: ColorScheme.light(primary: primary),
     dividerColor: Colors.black,
   );
+
+  MyThemes({bool isDarkMode}) {
+    if (isDarkMode == null) {
+      _selectedTheme = lightTheme;
+    } else {
+      _selectedTheme = isDarkMode ? darkTheme : lightTheme;
+    }
+  }
+
+  Future<void> swapTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (_selectedTheme == darkTheme) {
+      _selectedTheme = lightTheme;
+      prefs.setBool("isDarkTheme", false);
+    } else {
+      _selectedTheme = darkTheme;
+      prefs.setBool("isDarkTheme", true);
+    }
+    notifyListeners();
+    //notifylisteners calls for them to rebuild
+  }
+
+  ThemeData get getTheme => _selectedTheme;
 }
+
+
+
+

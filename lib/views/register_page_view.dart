@@ -6,7 +6,7 @@ import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
 import 'package:provider/provider.dart';
-import '../constants.dart';
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -22,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: Color(0xff191720),
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -52,11 +52,18 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           Text(
                             "Register",
-                            style: kHeadline,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 34,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Text(
                             "Create new account to get started.",
-                            style: kBodyText2,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                            ),
                           ),
                           SizedBox(
                             height: 50,
@@ -65,7 +72,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             controllerType: nameController,
                             hintText: 'Name',
                             inputType: TextInputType.name,
-                            
                           ),
                           MyTextField(
                             controllerType: emailController,
@@ -89,7 +95,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         Text(
                           "Already have an account? ",
-                          style: kBodyText,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -97,7 +106,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                           child: Text(
                             'Sign In',
-                            style: kBodyText.copyWith(
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                            ).copyWith(
                               color: Colors.white,
                             ),
                           ),
@@ -111,24 +123,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       buttonName: 'Register',
                       onTap: () async {
                         try {
-                        var newuser = await authService.signUp(
-                          name: nameController.text.trim(),
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                        if (newuser != null) {
-                          FirestoreService().addUserData(
-                            nameController.text.trim(),
-                            emailController.text.trim(),
-                            passwordController.text.trim(),
-                            
+                          var newuser = await authService.signUp(
+                            name: nameController.text.trim(),
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
                           );
-                           Navigator.of(context).pushNamed('/home');
-                        } else {
-                           Navigator.of(context).pushNamed('/welcome');
-                        }
+                          if (newuser != null) {
+                            FirestoreService().addUserData(
+                              nameController.text.trim(),
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                            );
+                            Navigator.of(context).pushNamed('/home');
+                          } else {
+                            Navigator.of(context).pushNamed('/welcome');
+                          }
                         } catch (e) {
-                          print("This is an exception from Register Page at Register Btn "+e.message);
+                          print(
+                              "This is an exception from Register Page at Register Btn " +
+                                  e.message);
                         }
                       },
                       bgColor: Colors.white,

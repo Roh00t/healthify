@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class MyTextButton extends StatelessWidget {
   const MyTextButton({
@@ -32,7 +31,11 @@ class MyTextButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           buttonName,
-          style: kButtonText.copyWith(color: textColor),
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ).copyWith(color: textColor),
         ),
       ),
     );

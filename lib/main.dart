@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/about_page_view.dart';
@@ -71,7 +70,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-          scaffoldBackgroundColor: kBackgroundColor,
+          scaffoldBackgroundColor: Color(0xff191720),
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

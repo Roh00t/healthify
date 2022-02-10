@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class MyPasswordField extends StatelessWidget {
   const MyPasswordField({
@@ -19,7 +18,10 @@ class MyPasswordField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
         controller: controllerInput,
-        style: kBodyText.copyWith(
+        style: TextStyle(
+          color: Colors.grey,
+          fontSize: 15,
+        ).copyWith(
           color: Colors.white,
         ),
         obscureText: isPasswordVisible,
@@ -40,7 +42,7 @@ class MyPasswordField extends StatelessWidget {
           ),
           contentPadding: EdgeInsets.all(20),
           hintText: 'Password',
-          hintStyle: kBodyText,
+          hintStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.grey,

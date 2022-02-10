@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class MyTextField extends StatelessWidget {
   const MyTextField({
     Key key,
@@ -18,13 +16,16 @@ class MyTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
         controller: controllerType,
-        style: kBodyText.copyWith(color: Colors.white),
+        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                        ).copyWith(color: Colors.white),
         keyboardType: inputType,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(20),
           hintText: hintText,
-          hintStyle: kBodyText,
+          hintStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.grey,
