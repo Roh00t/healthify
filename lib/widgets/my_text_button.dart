@@ -25,17 +25,17 @@ class MyTextButton extends StatelessWidget {
       child: TextButton(
         style: ButtonStyle(
           overlayColor: MaterialStateProperty.resolveWith(
-            (states) => Colors.black12,
+            (states) => Colors.white30,
           ),
         ),
         onPressed: onTap,
         child: Text(
           buttonName,
           style: TextStyle(
-            color: Colors.black87,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ).copyWith(color: textColor),
+  color: Colors.white70,
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+).copyWith(color: Theme.of(context).primaryColor),
         ),
       ),
     );

@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             child: _listPages[_currentIndex],
           ),
           bottomNavigationBar: BottomAppBar(
-            color: Colors.blue.shade200,
+            color: Theme.of(context).primaryColor,
             //shape property must be set to NotchedShape
             shape: CircularNotchedRectangle(),
             child: Row(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
           floatingActionButton: FloatingActionButton(
           child: Icon(Icons.logout),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Theme.of(context).primaryColor,
           tooltip: 'Sign Out',
           onPressed: () async {
             await FirebaseAuth.instance.signOut();

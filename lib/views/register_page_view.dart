@@ -7,6 +7,7 @@ import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
 import 'package:provider/provider.dart';
 
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -22,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff191720),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -61,9 +62,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           Text(
                             "Create new account to get started.",
                             style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                            ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
                           ),
                           SizedBox(
                             height: 50,

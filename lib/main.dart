@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/about_page_view.dart';
@@ -15,8 +16,8 @@ import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/views/register_page_view.dart';
 import 'package:healthify/views/setting_page_view.dart';
 import 'package:healthify/views/welcome_page_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 const bool kReleaseMode = bool.fromEnvironment('dart.vm.product');
 void main() async {
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -24,9 +25,15 @@ void main() async {
     if (kReleaseMode) exit(1);
   };
   WidgetsFlutterBinding.ensureInitialized();
+   SharedPreferences prefs = await SharedPreferences.getInstance();
   await Firebase.initializeApp();
   await UserPreferences.init();
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    child: MyApp(),
+    create: (BuildContext context) =>
+        ThemeProvider(isDarkMode: prefs.getBool("isDarkTheme")),
+    // ThemeProvider(isDarkMode: true),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -59,6 +66,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
     return MultiProvider(
       providers: [
         Provider<AuthService>(
@@ -68,12 +76,13 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'Material App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-          scaffoldBackgroundColor: Color(0xff191720),
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+        theme: themeProvider.getTheme,
+        // ThemeData(
+        //   textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        //   scaffoldBackgroundColor: Color(0xff191720),
+        //   primarySwatch: Colors.blue,
+        //   visualDensity: VisualDensity.adaptivePlatformDensity,
+        // ),
         //If user is not signed in, user will be redirected to the welcomepage
         home: FirebaseAuth.instance.currentUser == null ? WelcomePage() : HomePage(),
         routes: {
@@ -89,5 +98,6 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
+    });
   }
 }

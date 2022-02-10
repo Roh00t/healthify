@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:healthify/services/auth_service.dart';
-
 import 'package:healthify/widgets/my_password_field.dart';
 import 'package:healthify/widgets/my_text_button.dart';
 import 'package:healthify/widgets/my_text_field.dart';
@@ -23,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff191720),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -67,9 +65,9 @@ class _LoginPageState extends State<LoginPage> {
                           Text(
                             "You've been missed!",
                             style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                        ),
+                                fontSize: 28,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
                           ),
                           SizedBox(
                             height: 60,

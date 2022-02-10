@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-class MyThemes extends ChangeNotifier {
+class ThemeProvider extends ChangeNotifier {
   ThemeData _selectedTheme;
 
   static final primary = Colors.blue;
-  static final primaryColor = Colors.blue.shade300;
-
+  static final primaryColor = Colors.blue.shade100;
+  
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey.shade900,
+    backgroundColor: Colors.transparent,
     primaryColorDark: primaryColor,
     accentColor: Colors.blue,
     colorScheme: ColorScheme.dark(primary: primary),
@@ -16,12 +17,13 @@ class MyThemes extends ChangeNotifier {
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     primaryColor: primaryColor,
     colorScheme: ColorScheme.light(primary: primary),
     dividerColor: Colors.black,
   );
 
-  MyThemes({bool isDarkMode}) {
+  ThemeProvider({bool isDarkMode}) {
     if (isDarkMode == null) {
       _selectedTheme = lightTheme;
     } else {
