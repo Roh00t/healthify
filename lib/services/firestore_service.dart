@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/models/user_model.dart';
 
 class FirestoreService {
@@ -38,6 +39,7 @@ class FirestoreService {
     try{
     var docRef = FirestoreService().userCollection.doc();
     print('update docRef: ' + docRef.id);
+    Fluttertoast.showToast(msg: 'Data Updated Successfully', gravity: ToastGravity.TOP);
     await userCollection.doc(docRef.id).set({
       'uid': docRef.id,
       'name': userName,

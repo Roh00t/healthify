@@ -6,6 +6,7 @@ import 'package:healthify/services/auth_service.dart';
 import 'package:healthify/services/user_preferences.dart';
 import 'package:healthify/views/fitness_page_view.dart';
 import 'package:healthify/views/menu_page_view.dart';
+import 'package:healthify/views/searchRecipe_page_view.dart';
 import 'package:healthify/views/setting_page_view.dart';
 import 'package:healthify/views/welcome_page_view.dart';
 
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _listPages..add(FitnessPage())..add(MenuPage())..add(SettingsPage());
+    _listPages..add(FitnessPage())..add(MenuPage())..add(SearchRecipe())..add(SettingsPage());
   }
 
   @override
@@ -63,11 +64,21 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.white,
+                  
+                  onPressed: () {
+                    setState(() {
+                      _currentIndex = 2;
+                    });
+                  },
+                ),
+                IconButton(
                   icon: Icon(Icons.settings_applications_sharp),
                   color: Colors.white,
                   onPressed: () {
                     setState(() {
-                      _currentIndex = 2;
+                      _currentIndex = 3;
                     });
                   },
                 ),

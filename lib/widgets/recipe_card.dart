@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthify/views/recipedetail_page_view.dart';
+
 
 class RecipeCard extends StatelessWidget {
   final String title;
@@ -14,11 +14,7 @@ class RecipeCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => RecipeDetail(),
-        )),
-      child: Container(
+    return Container(
         margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
         width: MediaQuery.of(context).size.width,
         height: 180,
@@ -121,7 +117,6 @@ class RecipeCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

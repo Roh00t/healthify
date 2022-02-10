@@ -61,7 +61,10 @@ class _ProfilePage extends State<ProfilePage> {
             ),
           ),
         ),
-      
+      Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+        children:[
         // ignore: deprecated_member_use
         RaisedButton(
           onPressed: () async {
@@ -86,7 +89,30 @@ class _ProfilePage extends State<ProfilePage> {
     }
           },
           child: Text("Save Changes"),
+        ),
+        // ignore: deprecated_member_use
+        RaisedButton(
+          onPressed: () async {
+            try {
+               if (user != null) {
+            Navigator.of(context).pop();
+
+               }else{
+                  Fluttertoast.showToast(msg:'Please Log In Again', gravity: ToastGravity.TOP);
+                  return Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomePage(),));
+               }
+            
+            }catch (e){
+      Fluttertoast.showToast(msg: e.message, gravity: ToastGravity.TOP);
+      return Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomePage(),));
+    }
+          },
+          child: Text("Cancel"),
         )
+        ],
+      ),
       ],
     );
   }
