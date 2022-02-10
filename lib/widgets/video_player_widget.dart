@@ -28,6 +28,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
         widget.exercise.controller = controller;
         widget.onInitialized();
+      
       });
   }
 

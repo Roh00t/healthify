@@ -24,7 +24,7 @@ class _FitnessPageState extends State<FitnessPage> {
         flexibleSpace: FlexibleSpaceBar(background: LineChartWidget()),
         expandedHeight: MediaQuery.of(context).size.height * 0.5,
         stretch: true,
-        title: Text('Statistics'),
+        title: Text('Home'),
         centerTitle: true,
         leading: GestureDetector(
            onTap: () => Navigator.of(context).push(MaterialPageRoute(

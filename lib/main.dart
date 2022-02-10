@@ -18,7 +18,6 @@ import 'package:healthify/views/setting_page_view.dart';
 import 'package:healthify/views/welcome_page_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 const bool kReleaseMode = bool.fromEnvironment('dart.vm.product');
 void main() async {
   FlutterError.onError = (FlutterErrorDetails details) {
