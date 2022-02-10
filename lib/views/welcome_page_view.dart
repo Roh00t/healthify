@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthify/constants.dart';
 
 import 'package:healthify/widgets/my_text_button.dart';
-
-
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -29,10 +26,10 @@ class WelcomePage extends StatelessWidget {
                     Text(
                       "Healthify",
                       style: TextStyle(
-  color: Colors.white,
-  fontSize: 34,
-  fontWeight: FontWeight.bold,
-),
+                        color: Colors.white,
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
@@ -42,7 +39,10 @@ class WelcomePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: Text(
                         "Your personal health and fitness assistant!",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                     )
@@ -62,8 +62,8 @@ class WelcomePage extends StatelessWidget {
                         bgColor: Colors.white,
                         buttonName: 'Register',
                         onTap: () {
-                            Navigator.of(context).pushNamed('/register');
-                          },
+                          Navigator.of(context).pushNamed('/register');
+                        },
                         textColor: Colors.black87,
                       ),
                     ),
@@ -72,9 +72,9 @@ class WelcomePage extends StatelessWidget {
                         bgColor: Colors.black,
                         buttonName: 'Sign In',
                         onTap: () {
-                             Navigator.of(context).pushNamed('/login');
-                          },
-                        textColor:  Colors.white,
+                          Navigator.of(context).pushNamed('/login');
+                        },
+                        textColor: Colors.white,
                       ),
                     ),
                   ],
