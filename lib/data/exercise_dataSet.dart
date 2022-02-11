@@ -1,3 +1,6 @@
+//Data Sets for Exercises
+//Video URL is retrieved dynamically from Firebase
+
 import 'package:healthify/models/exercise_model.dart';
 
 final exercises1 = [

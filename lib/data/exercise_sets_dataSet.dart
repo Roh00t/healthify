@@ -1,3 +1,7 @@
+//Data Sets for Exercises Filtered based on difficulty
+//Image URL is retrieved dynamically from Firebase
+
+
 import 'package:healthify/models/exercise_set_model.dart';
 import 'package:flutter/material.dart';
 
