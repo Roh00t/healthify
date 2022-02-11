@@ -16,5 +16,11 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## SetUp
-
 Before you get started
+
+Register and get apiKeys for the following:
+Google Cloud For Maps
+Yummly API from Rapid API for Recipe List
+spoonacular api for Meal Planner
+EmailJS setup to send email to inbox.
+
