@@ -63,8 +63,8 @@ class _FitnessStatsPageState extends State<FitnessStatsPage> {
           child: Column(
             children: <Widget>[
               Text(
-                'Your Fitness Statistics',
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                'Your Fitness Statistics in hours',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10.0,

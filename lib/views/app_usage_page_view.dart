@@ -25,7 +25,7 @@ class _AppUsageHomePageState extends State<AppUsageHomePage> {
             charts.ColorUtil.fromDartColor(Color(int.parse(usage.colorVal))),
         id: 'usage',
         data: mydata,
-        labelAccessorFn: (Usage row, _) => "${row.usageVal}",
+        labelAccessorFn: (Usage row, _) => "${row.usageVal} min",
       ),
     );
   }

@@ -23,8 +23,8 @@ class _FitnessPageState extends State<FitnessPage> {
         ),
       );
   SliverAppBar buildAppBar(BuildContext context) => SliverAppBar(
-        flexibleSpace: FlexibleSpaceBar(background:  LineChartWidget()),
-        expandedHeight: MediaQuery.of(context).size.height * 0.5,
+        // flexibleSpace: FlexibleSpaceBar(background:  LineChartWidget()),
+        // expandedHeight: MediaQuery.of(context).size.height * 0.5,
         stretch: true,
         title: Text('Home'),
         centerTitle: true,
