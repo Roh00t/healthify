@@ -19,8 +19,8 @@ samples, guidance on mobile development, and a full API reference.
 Before you get started
 
 Register and get apiKeys for the following:
-Google Cloud For Maps
+Google Cloud For Maps (Place yours in secret.dart file)
 Yummly API from Rapid API for Recipe List
 spoonacular api for Meal Planner
 EmailJS setup to send email to inbox.
-
+Set up your Firbase Database

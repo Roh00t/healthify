@@ -6,6 +6,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
+import 'package:healthify/views/home_page_view.dart';
+
 class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -531,6 +533,15 @@ class _MapViewState extends State<MapView> {
                               ),
                             ),
                           ),
+                          ElevatedButton(onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage())), child: Text(
+                                'Back'.toUpperCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10.0,
+                                ),
+                              ),
+                            ),
+
                         ],
                       ),
                     ),
