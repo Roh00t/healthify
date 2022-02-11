@@ -36,6 +36,7 @@ dependencies:
   shared_preferences:
   video_player:
   fl_chart: ^0.36.4
+  charts_flutter:
   http:
   image_picker:
   google_maps_flutter:

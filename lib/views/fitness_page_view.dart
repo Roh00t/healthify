@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthify/views/app_usage_page_view.dart';
 import 'package:healthify/views/map_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/widgets/exercises_widget.dart';
@@ -22,7 +23,7 @@ class _FitnessPageState extends State<FitnessPage> {
         ),
       );
   SliverAppBar buildAppBar(BuildContext context) => SliverAppBar(
-        flexibleSpace: FlexibleSpaceBar(background: LineChartWidget()),
+        flexibleSpace: FlexibleSpaceBar(background:  LineChartWidget()),
         expandedHeight: MediaQuery.of(context).size.height * 0.5,
         stretch: true,
         title: Text('Home'),
@@ -39,6 +40,14 @@ class _FitnessPageState extends State<FitnessPage> {
                   )),
               child: Icon(
                 Icons.person,
+                size: 28,
+              )),
+              GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AppUsageHomePage(),
+                  )),
+              child: Icon(
+                Icons.bar_chart,
                 size: 28,
               )),
           SizedBox(width: 12),

@@ -34,6 +34,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: 'General',
                 children: [
                   AboutPage(),
+                  
                 ],
               ),
               const SizedBox(
@@ -48,6 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   buildSendFeedback(context),
                 ],
               ),
+              
               testNotification(),
                ElevatedButton.icon(
                 label: Text('Change Theme'),
