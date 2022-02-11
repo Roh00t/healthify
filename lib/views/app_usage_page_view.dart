@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:healthify/models/appUsage.dart';
+import 'package:healthify/models/appUsage_model.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:healthify/views/fitnessStats_page_view.dart';
 

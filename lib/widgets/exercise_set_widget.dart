@@ -1,4 +1,4 @@
-import 'package:healthify/models/exercise_set.dart';
+import 'package:healthify/models/exercise_set_model.dart';
 import 'package:healthify/services/storage_service.dart';
 import 'package:healthify/views/exercise_page_view.dart';
 import 'package:flutter/material.dart';

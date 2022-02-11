@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../data/line_titles.dart';
+import '../data/line_titles_dataSet.dart';
 
 class LineChartWidget extends StatelessWidget {
   @override

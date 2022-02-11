@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:healthify/models/recipe.dart';
+import 'package:healthify/models/recipe_model.dart';
 import 'package:http/http.dart' as http;
 
 class RecipeApi {

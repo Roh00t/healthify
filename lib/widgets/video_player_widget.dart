@@ -1,4 +1,4 @@
-import 'package:healthify/models/exercise.dart';
+import 'package:healthify/models/exercise_model.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 

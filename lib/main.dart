@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/services/user_preferences.dart';
+import 'package:healthify/services/user_preferences_service.dart';
 import 'package:healthify/views/about_page_view.dart';
 import 'package:healthify/views/fitness_page_view.dart';
 import 'package:healthify/views/home_page_view.dart';

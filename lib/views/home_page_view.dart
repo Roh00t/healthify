@@ -2,7 +2,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/services/user_preferences.dart';
+import 'package:healthify/services/user_preferences_service.dart';
 import 'package:healthify/views/fitness_page_view.dart';
 import 'package:healthify/views/menu_page_view.dart';
 import 'package:healthify/views/searchRecipe_page_view.dart';

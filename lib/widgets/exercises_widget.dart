@@ -1,5 +1,5 @@
-import 'package:healthify/data/exercise_sets.dart';
-import 'package:healthify/models/exercise_set.dart';
+import 'package:healthify/data/exercise_sets_dataSet.dart';
+import 'package:healthify/models/exercise_set_model.dart';
 import 'package:healthify/widgets/exercise_set_widget.dart';
 import 'package:flutter/material.dart';
 class ExercisesWidget extends StatefulWidget {

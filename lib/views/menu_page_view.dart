@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:healthify/models/recipe.api.dart';
-import 'package:healthify/models/recipe.dart';
-import 'package:healthify/widgets/recipe_card.dart';
+import 'package:healthify/models/recipe.api_model.dart';
+import 'package:healthify/models/recipe_model.dart';
+import 'package:healthify/widgets/recipe_card_widget.dart';
 
 class MenuPage extends StatefulWidget {
   @override

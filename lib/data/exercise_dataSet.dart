@@ -1,4 +1,4 @@
-import 'package:healthify/models/exercise.dart';
+import 'package:healthify/models/exercise_model.dart';
 
 final exercises1 = [
   Exercise(

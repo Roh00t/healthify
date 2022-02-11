@@ -1,5 +1,5 @@
-import 'package:healthify/models/exercise.dart';
-import 'package:healthify/models/exercise_set.dart';
+import 'package:healthify/models/exercise_model.dart';
+import 'package:healthify/models/exercise_set_model.dart';
 import 'package:healthify/widgets/video_controls_widget.dart';
 import 'package:healthify/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';

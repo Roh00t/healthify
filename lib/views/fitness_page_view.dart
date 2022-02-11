@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/views/app_usage_page_view.dart';
-import 'package:healthify/views/map_view.dart';
+import 'package:healthify/views/map_page_view.dart';
 import 'package:healthify/views/profile_page_view.dart';
 import 'package:healthify/widgets/exercises_widget.dart';
-import 'package:healthify/widgets/line_chart_widget.dart';
+// import 'package:healthify/widgets/line_chart_widget.dart';
 
 class FitnessPage extends StatefulWidget {
   @override

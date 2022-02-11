@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/views/addFeedback_page_view.dart';
-import 'package:healthify/views/sendEmail.dart';
+import 'package:healthify/views/sendEmail_page_view.dart';
 import 'package:healthify/views/showFeedback_page_view.dart';
 
 class FeedbackPage extends StatefulWidget {

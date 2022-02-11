@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/services/auth_service.dart';
-import 'package:healthify/widgets/my_password_field.dart';
-import 'package:healthify/widgets/my_text_button.dart';
-import 'package:healthify/widgets/my_text_field.dart';
+import 'package:healthify/widgets/my_password_field_widget.dart';
+import 'package:healthify/widgets/my_text_button_widget.dart';
+import 'package:healthify/widgets/my_text_field_widget.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {

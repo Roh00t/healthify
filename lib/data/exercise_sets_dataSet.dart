@@ -1,7 +1,7 @@
-import 'package:healthify/models/exercise_set.dart';
+import 'package:healthify/models/exercise_set_model.dart';
 import 'package:flutter/material.dart';
 
-import 'exercise.dart';
+import 'exercise_dataSet.dart';
 
 final exerciseSets = [
   ExerciseSet(
