@@ -59,7 +59,7 @@ main.dart --> Brain of the project
 constants.dart --> Classes of colours that's used throughout the project
 secrets.dart --> Contains the Google API Key
 postman --> Contains a Postman Script of all the APIs used in the project
-
+app_demo_video --> Contains Video of App
 ## Getting Started
 
 This project is a starting point for a Flutter application.
