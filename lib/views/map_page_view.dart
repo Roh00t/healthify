@@ -12,6 +12,7 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Maps',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -346,6 +347,7 @@ class _MapViewState extends State<MapView> {
       height: height,
       width: width,
       child: Scaffold(
+        
         key: _scaffoldKey,
         body: Stack(
           children: <Widget>[
