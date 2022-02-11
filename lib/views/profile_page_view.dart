@@ -15,9 +15,11 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           title: Text('My Profile'),
           centerTitle: true,
+          
         ),
         body: SingleChildScrollView(
             child: Container(

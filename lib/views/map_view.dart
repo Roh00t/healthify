@@ -92,7 +92,7 @@ class MapSampleState extends State<MapSample> {
           },
           icon: Image(
             width: 24,
-            color: Colors.black,
+            color: Theme.of(context).backgroundColor,
             image: AssetImage('assets/images/back_arrow.png'),
           ),
         ),

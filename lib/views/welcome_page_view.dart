@@ -7,6 +7,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -69,7 +70,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     Expanded(
                       child: MyTextButton(
-                        bgColor: Colors.black,
+                        bgColor: Colors.grey,
                         buttonName: 'Sign In',
                         onTap: () {
                           Navigator.of(context).pushNamed('/login');

@@ -30,6 +30,7 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(

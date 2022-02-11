@@ -12,6 +12,7 @@ class FitnessPage extends StatefulWidget {
 class _FitnessPageState extends State<FitnessPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: CustomScrollView(
           physics: BouncingScrollPhysics(),
           slivers: [
