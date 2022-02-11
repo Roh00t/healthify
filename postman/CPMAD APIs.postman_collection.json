@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "cd185d97-7118-4d7a-96e2-09d6975016d7",
+		"name": "CPMAD APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Spoonacular API",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "contentTypeHeader",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.spoonacular.com/recipes/mealplans/generate?timeFrame=day&targetCalories=1000&diet=Vegan&apiKey=1785357f0d714519b29146bf8850fb35",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spoonacular",
+						"com"
+					],
+					"path": [
+						"recipes",
+						"mealplans",
+						"generate"
+					],
+					"query": [
+						{
+							"key": "timeFrame",
+							"value": "day"
+						},
+						{
+							"key": "targetCalories",
+							"value": "1000"
+						},
+						{
+							"key": "diet",
+							"value": "Vegan"
+						},
+						{
+							"key": "apiKey",
+							"value": "1785357f0d714519b29146bf8850fb35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Spoonacular API Failed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "contentTypeHeader",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.spoonacular.com/recipes/mealplans/generate?timeFrame=day&targetCalories=1000&diet=Vegan&apiKey=1785357f0d714519b29146bf8850fb35",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spoonacular",
+						"com"
+					],
+					"path": [
+						"recipes",
+						"mealplans",
+						"generate"
+					],
+					"query": [
+						{
+							"key": "timeFrame",
+							"value": "day"
+						},
+						{
+							"key": "targetCalories",
+							"value": "1000"
+						},
+						{
+							"key": "diet",
+							"value": "Vegan"
+						},
+						{
+							"key": "apiKey",
+							"value": "1785357f0d714519b29146bf8850fb35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yummly API ",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-rapidapi-host",
+						"value": "yummly2.p.rapidapi.com",
+						"type": "text"
+					},
+					{
+						"key": "x-rapidapi-key",
+						"value": "bf0e6a6946msh8c4721e799245d0p1e7596jsn7f7f7e0b84fc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://yummly2.p.rapidapi.com/feeds/list?limit=18&start=0&tag=list.recipe.popular",
+					"protocol": "https",
+					"host": [
+						"yummly2",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"feeds",
+						"list"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "18"
+						},
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "tag",
+							"value": "list.recipe.popular"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
