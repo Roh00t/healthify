@@ -1,3 +1,4 @@
+//User Model for edit profile, profile, log in, log out, register
 class UserModel {
   String uid;
   String name;

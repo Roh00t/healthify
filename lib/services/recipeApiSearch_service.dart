@@ -11,7 +11,7 @@ class APIService {
   static final APIService instance = APIService._instantiate();
 
   final String _baseUrl = 'api.spoonacular.com';
-  static const String API_KEY = '1785357f0d714519b29146bf8850fb35';
+  static const String API_KEY = '1785357f0d714519b29146bf8850fb35'; //API Key for Spoonacular
 
   // Generate Meal Plan
   Future<MealPlan> generateMealPlan({int targetCalories, String diet}) async {

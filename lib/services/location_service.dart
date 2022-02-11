@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 class LocationService {
-  final String key = 'AIzaSyCion1MT4GCqLa0JepAkzgyCk1PbXK9GtQ';
+  final String key = 'AIzaSyCion1MT4GCqLa0JepAkzgyCk1PbXK9GtQ'; //API Key for Google Maps (Google Cloud Platform)
 
   Future<String> getPlaceId(String input) async {
     final String url =
